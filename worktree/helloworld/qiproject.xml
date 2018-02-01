@@ -1,0 +1,6 @@
+<project version="3">
+<maintainer email="skellar2014@my.fit.edu">Samuel Kellar</maintainer>
+  <qibuild name="helloworld">
+    <depends buildtime="true" runtime="true" names="libnaoqi" />
+ </qibuild>
+</project>
