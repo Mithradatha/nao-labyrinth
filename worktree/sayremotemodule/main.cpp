@@ -92,7 +92,30 @@ int main(int argc, const char *argv[])
 
         AL::ALProxy proxy(broker, "MyModule");
         proxy.callVoid("printHelloWorld");
-        proxy.callVoid("sayString", string("Hello World!"));
+
+        bool running = true;
+        cout << "Type 'exit' to leave..." << endl;
+
+        do
+        {
+            cout << ">> ";
+
+            string str;
+            getline(cin, str);
+
+            if (str == "exit")
+            {
+                running = false;
+            }
+            else
+            {
+                proxy.callVoid("sayString", str);
+                cout << endl;
+            }
+
+        } while (running);
+
+        proxy.callVoid("sayString", "Bye, Bye.");
 
         // boost::shared_ptr<AL::ALTextToSpeechProxy> ttsProxy(new AL::ALTextToSpeechProxy(broker));
         // ttsProxy->say(string("Hello World!"));
