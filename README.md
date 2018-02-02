@@ -13,8 +13,8 @@ To setup a new project:
     1. qibuild config --wizard
     2. cd worktree
     3. qibuild init
-    4. `qitoolchain create <YOUR_TOOLCHAIN_NAME> 
-       <PATH_TO_NAO_SDK>/toolchain.xml`
+    4. qitoolchain create <YOUR_TOOLCHAIN_NAME> 
+       <PATH_TO_NAO_SDK>/toolchain.xml
     5. qibuild add-config <YOUR_CONFIG_NAME> -t <YOUR_TOOLCHAIN_NAME>
     6. qibuild set-default <YOUR_CONFIG_NAME>
     6. qisrc create <YOUR_PROJECT_NAME>
