@@ -1,9 +1,6 @@
 package edu.fit.nao;
 
-import com.aldebaran.qi.Application;
-import com.aldebaran.qi.DynamicObjectBuilder;
-import com.aldebaran.qi.QiService;
-import com.aldebaran.qi.Session;
+import com.aldebaran.qi.*;
 import edu.fit.nao.module.RepeatProxy;
 import edu.fit.nao.module.RepeatService;
 import org.apache.commons.cli.*;
@@ -58,6 +55,7 @@ public class Main {
 
             formatter.printUsage(writer, 80, "Main", options);
             writer.flush();
+            writer.close();
 
             System.exit(1);
         }
@@ -71,11 +69,12 @@ public class Main {
 
             ConnectionInfo connectionInfo = parseOptions(args);
 
+            //String robotUrl = "tcp://" + connectionInfo.ip + ":" + connectionInfo.port;
             String robotUrl = String.format("tcp://%s:%d", connectionInfo.ip, connectionInfo.port);
+            System.out.println(robotUrl);
             Application app = new Application(args, robotUrl);
 
             app.start();
-
             Session session = app.session();
 
             QiService repeatService = new RepeatService(session);
@@ -83,15 +82,15 @@ public class Main {
             DynamicObjectBuilder objBuilder = new DynamicObjectBuilder();
             repeatService.init(objBuilder.object());
 
-            objBuilder.advertiseMethod("repeat::(s)", repeatService, "Repeats string");
+            objBuilder.advertiseMethod("repeat::v(s)", repeatService, "Repeats string");
             session.registerService("RepeatService", objBuilder.object());
 
-            app.run();
-            run(session);
+            Main.run(session);
 
         } catch (Exception ex) {
 
             ex.printStackTrace();
+            System.exit(1);
         }
     }
 
