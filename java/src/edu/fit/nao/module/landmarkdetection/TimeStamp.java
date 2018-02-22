@@ -2,10 +2,7 @@ package edu.fit.nao.module.landmarkdetection;
 
 import edu.fit.nao.Util;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TimeStamp {
@@ -35,10 +32,6 @@ public class TimeStamp {
     @Override
     public String toString() {
 
-        List<Map.Entry<String, Object>> fields = new ArrayList<>();
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("seconds", seconds));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("microseconds", microseconds));
-
-        return Util.ToJson(fields);
+        return Util.ToHumanReadable(this);
     }
 }

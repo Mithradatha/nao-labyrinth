@@ -2,10 +2,7 @@ package edu.fit.nao.module.landmarkdetection;
 
 import edu.fit.nao.Util;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Position6D {
@@ -60,14 +57,6 @@ public class Position6D {
     @Override
     public String toString() {
 
-        List<Map.Entry<String, Object>> fields = new ArrayList<>();
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("x", x));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("y", y));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("z", z));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("wx", wx));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("wy", wy));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("wz", wz));
-
-        return Util.ToJson(fields);
+        return Util.ToHumanReadable(this);
     }
 }

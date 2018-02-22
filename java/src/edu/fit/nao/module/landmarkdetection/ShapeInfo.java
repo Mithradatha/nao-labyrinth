@@ -2,10 +2,7 @@ package edu.fit.nao.module.landmarkdetection;
 
 import edu.fit.nao.Util;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * ShapeInfo {
@@ -57,14 +54,6 @@ public class ShapeInfo {
     @Override
     public String toString() {
 
-        List<Map.Entry<String, Object>> fields = new ArrayList<>();
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("one", one));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("alpha", alpha));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("beta", beta));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("sizeX", sizeX));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("sizeY", sizeY));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("heading", heading));
-
-        return Util.ToJson(fields);
+        return Util.ToHumanReadable(this);
     }
 }

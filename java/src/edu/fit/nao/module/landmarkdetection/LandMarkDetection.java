@@ -2,10 +2,7 @@ package edu.fit.nao.module.landmarkdetection;
 
 import edu.fit.nao.Util;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -58,14 +55,7 @@ public class LandMarkDetection {
     @Override
     public String toString() {
 
-        List<Map.Entry<String, Object>> fields = new ArrayList<>();
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("timeStamp", timeStamp));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("markInfo", markInfo));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("cameraPoseInFrameTorso", cameraPoseInFrameTorso));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("cameraPoseInFrameRobot", cameraPoseInFrameRobot));
-        fields.add(new AbstractMap.SimpleImmutableEntry<String, Object>("currentCameraName", currentCameraName));
-
-        return Util.ToJson(fields);
+        return Util.ToHumanReadable(this);
     }
 }
 

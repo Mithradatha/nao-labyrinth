@@ -3,8 +3,7 @@ package edu.fit.nao;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
 
 public abstract class Util {
 
@@ -56,15 +55,28 @@ public abstract class Util {
         return connectionInfo;
     }
 
-    public static String ToJson(List<Map.Entry<String, Object>> fields) {
+    public static String ToHumanReadable(Object o) {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{\n");
 
-        for (Map.Entry<String, Object> field : fields) {
+        Class<?> oClass = o.getClass();
 
-            stringBuilder.append("\t").append(field.getKey()).append(": ")
-                    .append(field.getValue().toString()).append(",\n");
+        Field[] fields = oClass.getDeclaredFields();
+        for (final Field field : fields) {
+
+            try {
+
+                Object value = field.get(o);
+                String fieldName = field.getName();
+
+                stringBuilder.append(fieldName).append(": ")
+                        .append(value.toString()).append(",\n");
+
+            } catch (IllegalAccessException ignored) {
+
+                stringBuilder.append("N/A").append(",\n");
+            }
         }
 
         // remove the last comma
