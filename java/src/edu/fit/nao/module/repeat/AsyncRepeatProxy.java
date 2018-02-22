@@ -1,4 +1,4 @@
-package edu.fit.nao.module;
+package edu.fit.nao.module.repeat;
 
 import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.Future;

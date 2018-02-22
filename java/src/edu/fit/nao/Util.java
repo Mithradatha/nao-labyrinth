@@ -3,10 +3,12 @@ package edu.fit.nao;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 
-public abstract class NaoUtil {
+public abstract class Util {
 
-    public static ConnectionInfo ParseOptions(final String[] args) {
+    public static ConnectionInfo ParseOptions(final String[] args, final boolean exitOnFail) {
 
         final Option pipOption = Option.builder()
                 .longOpt("pip")
@@ -47,9 +49,29 @@ public abstract class NaoUtil {
             writer.flush();
             writer.close();
 
-            System.exit(1);
+            if (exitOnFail)
+                System.exit(1);
         }
 
         return connectionInfo;
+    }
+
+    public static String ToJson(List<Map.Entry<String, Object>> fields) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{\n");
+
+        for (Map.Entry<String, Object> field : fields) {
+
+            stringBuilder.append("\t").append(field.getKey()).append(": ")
+                    .append(field.getValue().toString()).append(",\n");
+        }
+
+        // remove the last comma
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
+
+        stringBuilder.append("}");
+
+        return stringBuilder.toString();
     }
 }
