@@ -40,7 +40,7 @@ public class Main {
 
     private static void run(Session session) throws Exception {
 
-        QiService repeatService = new RepeatService(session);
+        QiService repeatService = new RepeatService(null);
 
         DynamicObjectBuilder objBuilder = new DynamicObjectBuilder();
         objBuilder.advertiseMethod("repeat::v(s)", repeatService, "Repeats string");
@@ -48,7 +48,7 @@ public class Main {
         repeatService.init(objBuilder.object());
         session.registerService("RepeatService", objBuilder.object());
 
-        RepeatProxy proxy = new RepeatProxy(session, "RepeatService");
+        RepeatProxy proxy = new RepeatProxy(session);
 
         boolean running = true;
         System.out.println("Type 'exit' to leave...");

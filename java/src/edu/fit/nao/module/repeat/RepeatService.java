@@ -1,19 +1,21 @@
 package edu.fit.nao.module.repeat;
 
 import com.aldebaran.qi.CallError;
-import com.aldebaran.qi.QiService;
-import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.proxies.ALTextToSpeech;
+import edu.fit.nao.Advertise;
+import edu.fit.nao.CustomService;
 
-public class RepeatService extends QiService {
+public class RepeatService extends CustomService {
 
     private ALTextToSpeech tts;
 
-    public RepeatService(Session session) throws Exception {
+    public RepeatService(ALTextToSpeech tts) {
 
-       this.tts = new ALTextToSpeech(session);
+        super("RepeatService");
+        this.tts = tts;
     }
 
+    @Advertise(signature = "repeat::v(s)", description = "Repeats given string")
     public void repeat(String str) throws InterruptedException, CallError {
 
         this.tts.say(str);

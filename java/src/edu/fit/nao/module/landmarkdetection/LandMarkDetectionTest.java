@@ -15,6 +15,7 @@ public class LandMarkDetectionTest extends ModuleRunner {
     private ALTextToSpeech tts;
 
     public LandMarkDetectionTest(Session session, String robotUrl) throws Exception {
+
         super(session, robotUrl);
 
         lmd = new LandMarkDetectionProxy(session);

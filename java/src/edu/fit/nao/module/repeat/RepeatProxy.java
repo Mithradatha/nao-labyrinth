@@ -8,9 +8,9 @@ public class RepeatProxy extends ALProxy {
 
     private AsyncRepeatProxy asyncRepeatProxy = new AsyncRepeatProxy();
 
-    public RepeatProxy(Session session, String serviceName) throws Exception {
+    public RepeatProxy(Session session) throws Exception {
 
-        super(session, serviceName);
+        super(session, "RepeatService");
         this.asyncRepeatProxy.setService(this.getService());
     }
 
