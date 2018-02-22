@@ -1,6 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
-import edu.fit.nao.Util;
+import edu.fit.nao.ALValue;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * wz
  * }
  */
-public class Position6D {
+public class Position6D extends ALValue<List> {
 
     // translation (meters)
     public float x;
@@ -52,11 +52,5 @@ public class Position6D {
                 (float) alValue.get(4),
                 (float) alValue.get(5)
         );
-    }
-
-    @Override
-    public String toString() {
-
-        return Util.ToHumanReadable(this);
     }
 }

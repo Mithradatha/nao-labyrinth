@@ -1,6 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
-import edu.fit.nao.Util;
+import edu.fit.nao.ALValue;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * heading
  * }
  */
-public class ShapeInfo {
+public class ShapeInfo extends ALValue<List> {
 
     public int one;
     public float alpha;
@@ -49,11 +49,5 @@ public class ShapeInfo {
                 (float) alValue.get(4),
                 (int) alValue.get(5)
         );
-    }
-
-    @Override
-    public String toString() {
-
-        return Util.ToHumanReadable(this);
     }
 }

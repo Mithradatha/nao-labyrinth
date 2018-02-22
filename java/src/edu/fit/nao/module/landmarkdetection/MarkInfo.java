@@ -1,6 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
-import edu.fit.nao.Util;
+import edu.fit.nao.ALValue;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * MarkID
  * }
  */
-public class MarkInfo {
+public class MarkInfo extends ALValue<List> {
 
     public ShapeInfo shapeInfo;
     public int markID;
@@ -27,11 +27,5 @@ public class MarkInfo {
                 new ShapeInfo((List) alValue.get(0)),
                 (int) ((List) alValue.get(1)).get(0)
         );
-    }
-
-    @Override
-    public String toString() {
-
-        return Util.ToHumanReadable(this);
     }
 }

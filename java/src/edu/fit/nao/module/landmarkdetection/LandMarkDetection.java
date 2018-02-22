@@ -1,6 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
-import edu.fit.nao.Util;
+import edu.fit.nao.ALValue;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * CurrentCameraName
  * }
  */
-public class LandMarkDetection {
+public class LandMarkDetection extends ALValue<List> {
 
     public TimeStamp timeStamp;
     public List<MarkInfo> markInfo;
@@ -50,12 +50,6 @@ public class LandMarkDetection {
                 new Position6D((List) alValue.get(3)),
                 (String) alValue.get(4)
         );
-    }
-
-    @Override
-    public String toString() {
-
-        return Util.ToHumanReadable(this);
     }
 }
 

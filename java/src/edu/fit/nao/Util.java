@@ -3,7 +3,6 @@ package edu.fit.nao;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
-import java.lang.reflect.Field;
 
 public abstract class Util {
 
@@ -53,37 +52,5 @@ public abstract class Util {
         }
 
         return connectionInfo;
-    }
-
-    public static String ToHumanReadable(Object o) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{\n");
-
-        Class<?> oClass = o.getClass();
-
-        Field[] fields = oClass.getDeclaredFields();
-        for (final Field field : fields) {
-
-            try {
-
-                Object value = field.get(o);
-                String fieldName = field.getName();
-
-                stringBuilder.append(fieldName).append(": ")
-                        .append(value.toString()).append(",\n");
-
-            } catch (IllegalAccessException ignored) {
-
-                stringBuilder.append("N/A").append(",\n");
-            }
-        }
-
-        // remove the last comma
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
-
-        stringBuilder.append("}");
-
-        return stringBuilder.toString();
     }
 }

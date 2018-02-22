@@ -1,6 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
-import edu.fit.nao.Util;
+import edu.fit.nao.ALValue;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Timestamp_Microseconds
  * }
  */
-public class TimeStamp {
+public class TimeStamp extends ALValue<List> {
 
     public int seconds;
     public int microseconds;
@@ -27,11 +27,5 @@ public class TimeStamp {
                 (int) alValue.get(0),
                 (int) alValue.get(1)
         );
-    }
-
-    @Override
-    public String toString() {
-
-        return Util.ToHumanReadable(this);
     }
 }
