@@ -17,12 +17,11 @@ public class LandMarkDetectionProxy extends ALProxy {
         super(session, "ALLandMarkDetection");
 
         memory = new ALMemory(session);
-        init();
     }
 
-    private void init() throws CallError, InterruptedException {
+    public void subscribe() throws CallError, InterruptedException {
 
-        this.call("subscribe", "Test_LandmarkDetected").get();
+        this.call("subscribe", "Test_LandmarkDetected");
     }
 
     public long setEventCallback(EventCallback<List> callback) throws Exception {
