@@ -21,6 +21,8 @@ public class Main {
 
         try {
 
+
+
             ConnectionInfo connectionInfo = Util.ParseOptions(args, true);
 
             String robotUrl = String.format("tcp://%s:%d", connectionInfo.ip, connectionInfo.port);
