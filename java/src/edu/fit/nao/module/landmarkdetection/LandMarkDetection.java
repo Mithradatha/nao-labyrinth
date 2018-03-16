@@ -16,20 +16,20 @@ import java.util.stream.Collectors;
  */
 public class LandMarkDetection extends ALValue<List> {
 
-    public TimeStamp timeStamp;
-    public List<MarkInfo> markInfo;
-    public Position6D cameraPoseInFrameTorso;
-    public Position6D cameraPoseInFrameRobot;
+    public final TimeStamp timeStamp;
+    public final List<MarkInfo> markInfo;
+    public final Position6D cameraPoseInFrameTorso;
+    public final Position6D cameraPoseInFrameRobot;
 
     // “CameraTop” or “CameraBottom”
-    public String currentCameraName;
+    public final String currentCameraName;
 
     private LandMarkDetection(
-            final TimeStamp timeStamp,
-            final List<MarkInfo> markInfo,
-            final Position6D cameraPoseInFrameTorso,
-            final Position6D cameraPoseInFrameRobot,
-            final String currentCameraName
+            TimeStamp timeStamp,
+            List<MarkInfo> markInfo,
+            Position6D cameraPoseInFrameTorso,
+            Position6D cameraPoseInFrameRobot,
+            String currentCameraName
     ) {
         this.timeStamp = timeStamp;
         this.markInfo = markInfo;

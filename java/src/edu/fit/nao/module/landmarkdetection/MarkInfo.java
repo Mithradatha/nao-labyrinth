@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class MarkInfo extends ALValue<List> {
 
-    public ShapeInfo shapeInfo;
-    public int markID;
+    public final ShapeInfo shapeInfo;
+    public final int markID;
 
-    public MarkInfo(final ShapeInfo shapeInfo, final int markID) {
+    public MarkInfo(ShapeInfo shapeInfo, int markID) {
 
         this.shapeInfo = shapeInfo;
         this.markID = markID;

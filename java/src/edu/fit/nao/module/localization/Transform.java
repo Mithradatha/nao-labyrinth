@@ -1,4 +1,4 @@
-package edu.fit.nao.module.navigation;
+package edu.fit.nao.module.localization;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,6 @@ public class Transform implements Cloneable {
 
     private float r1_c1, r1_c2, r1_c3, r1_c4;
     private float r2_c1, r2_c2, r2_c3, r2_c4;
-
     private float r3_c1, r3_c2, r3_c3, r3_c4;
 
     // identity matrix
@@ -59,7 +58,7 @@ public class Transform implements Cloneable {
     }
 
     // populate translation vector
-    public Transform(final float pPosX, final float pPosY, final float pPosZ) {
+    public Transform(float pPosX, float pPosY, float pPosZ) {
 
         this();
 
@@ -74,7 +73,7 @@ public class Transform implements Cloneable {
     }
 
     // the float values for euler angle in radians
-    public Transform from3DRotation(final float pWX, final float pWY, final float pWZ) {
+    public Transform from3DRotation(float pWX, float pWY, float pWZ) {
 
         Transform transform = this.clone();
 
@@ -86,14 +85,14 @@ public class Transform implements Cloneable {
     }
 
     // the float values for euler angle in radians
-    public static Transform From3DRotation(final float pWX, final float pWY, final float pWZ) {
+    public static Transform From3DRotation(float pWX, float pWY, float pWZ) {
 
         Transform transform = MatrixMultiply(FromRotZ(pWZ), FromRotY(pWY));
         return MatrixMultiply(transform, FromRotX(pWX));
     }
 
     // the float value for angle rotation in radian around z axis
-    public Transform fromRotZ(final float pRotZ) {
+    public Transform fromRotZ(float pRotZ) {
 
         Transform transform = this.clone();
 
@@ -106,7 +105,7 @@ public class Transform implements Cloneable {
     }
 
     // the float value for angle rotation in radian around z axis
-    public static Transform FromRotZ(final float pRotZ) {
+    public static Transform FromRotZ(float pRotZ) {
 
         Transform transform = new Transform();
         transform.r1_c1 = (float) Math.cos(pRotZ);
@@ -118,7 +117,7 @@ public class Transform implements Cloneable {
     }
 
     // the float value for angle rotation in radian around y axis
-    public Transform fromRotY(final float pRotY) {
+    public Transform fromRotY(float pRotY) {
 
         Transform transform = this.clone();
 
@@ -131,7 +130,7 @@ public class Transform implements Cloneable {
     }
 
     // the float value for angle rotation in radian around y axis
-    public static Transform FromRotY(final float pRotY) {
+    public static Transform FromRotY(float pRotY) {
 
         Transform transform = new Transform();
         transform.r1_c1 = (float) Math.cos(pRotY);
@@ -143,7 +142,7 @@ public class Transform implements Cloneable {
     }
 
     // the float value for angle rotation in radian around x axis
-    public Transform fromRotX(final float pRotX) {
+    public Transform fromRotX(float pRotX) {
 
         Transform transform = this.clone();
 
@@ -156,7 +155,7 @@ public class Transform implements Cloneable {
     }
 
     // the float value for angle rotation in radian around x axis
-    public static Transform FromRotX(final float pRotX) {
+    public static Transform FromRotX(float pRotX) {
 
         Transform transform = new Transform();
         transform.r2_c2 = (float) Math.cos(pRotX);
@@ -167,7 +166,7 @@ public class Transform implements Cloneable {
         return transform;
     }
 
-    public Transform matrixMultiply(final Transform o) {
+    public Transform matrixMultiply(Transform o) {
 
         Transform transform = this.clone();
 
@@ -189,7 +188,7 @@ public class Transform implements Cloneable {
         return transform;
     }
 
-    public static Transform MatrixMultiply(final Transform a, final Transform b) {
+    public static Transform MatrixMultiply(Transform a, Transform b) {
 
         List<Float> pFloats = new ArrayList<>(12);
 
@@ -213,6 +212,7 @@ public class Transform implements Cloneable {
 
     @Override
     protected Transform clone() {
+
         try {
             return (Transform) super.clone();
         } catch (CloneNotSupportedException e) {
@@ -223,6 +223,7 @@ public class Transform implements Cloneable {
 
     @Override
     public String toString() {
+
         return "| " + normalize(r1_c1) + ' ' + normalize(r1_c2) +
                 ' ' + normalize(r1_c3) + ' ' + normalize(r1_c4) + " |\n" +
                 "| " + normalize(r2_c1) + ' ' + normalize(r2_c2) +
@@ -233,6 +234,7 @@ public class Transform implements Cloneable {
     }
 
     private String normalize(Float f) {
+
         return (f < 0) ? f.toString() : "+" + f;
     }
 

@@ -9,7 +9,7 @@ public class Node implements Comparable<Node> {
 
     public int g, h;
 
-    public Node(final Point2D position, final boolean blocked) {
+    public Node(Point2D position, boolean blocked) {
 
         this.position = position;
 
@@ -19,11 +19,11 @@ public class Node implements Comparable<Node> {
         this.blocked = blocked;
     }
 
-    public Node(final int x, final int y, final boolean blocked) {
+    public Node(int x, int y, boolean blocked) {
         this(new Point2D(x, y), blocked);
     }
 
-    public Node(final int x, final int y) {
+    public Node(int x, int y) {
         this(x, y, false);
     }
 

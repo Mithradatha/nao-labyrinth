@@ -6,11 +6,11 @@ public class AStar {
 
     private final Grid grid;
 
-    public AStar(final Node[][] grid) {
+    public AStar(Node[][] grid) {
         this.grid = new Grid(grid);
     }
 
-    public List<Point2D> search(final Node start, final Node goal) {
+    public List<Point2D> search(Node start, Node goal) {
 
         PriorityQueue<Node> unexplored = new PriorityQueue<>();
         unexplored.add(start);
@@ -34,7 +34,7 @@ public class AStar {
 
                 if (!unexplored.contains(neighbor)) unexplored.add(neighbor);
 
-                final int accumulatedPathCost = current.g + 1;
+                int accumulatedPathCost = current.g + 1;
                 if (accumulatedPathCost >= neighbor.g) continue;
 
                 neighbor.parent = current;

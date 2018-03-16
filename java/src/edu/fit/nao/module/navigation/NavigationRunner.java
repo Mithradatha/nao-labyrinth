@@ -1,28 +1,40 @@
 package edu.fit.nao.module.navigation;
 
+import com.aldebaran.qi.Session;
+import com.aldebaran.qi.helper.proxies.ALTextToSpeech;
+import edu.fit.nao.ModuleRunner;
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
-public class Test {
+public class NavigationRunner extends ModuleRunner {
 
-    public static void main(String... args) {
+    private final int xNodes;
+    private final int yNodes;
 
-        if (args.length != 3) System.exit(1);
+    private final String fileName;
 
-        final int xNodes = Integer.parseInt(args[0]);
-        final int yNodes = Integer.parseInt(args[1]);
+    public NavigationRunner(Session session, int xNodes, int yNodes, String fileName) {
 
-        final String fileName = args[2];
+        super(session);
+
+        this.xNodes = xNodes;
+        this.yNodes = yNodes;
+        this.fileName = fileName;
+    }
+
+    @Override
+    public void run() throws Exception {
+
+        ALTextToSpeech tts = new ALTextToSpeech(session);
 
         Node[][] grid = new Node[xNodes][yNodes];
         Node start = null, goal = null;
 
         int x = 0, y = 0;
 
-        try (final BufferedInputStream bis = new BufferedInputStream(new FileInputStream(fileName))) {
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(fileName))) {
 
             int i;
             while ((i = bis.read()) != -1) {
@@ -51,23 +63,19 @@ public class Test {
                 }
             }
 
-            if (x != xNodes) System.exit(1);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (x != xNodes) throw new Exception("File Format Exception");
         }
 
         printGrid(grid);
 
-        final AStar aStar = new AStar(grid);
-        final List<Point2D> path = aStar.search(start, goal);
+        AStar aStar = new AStar(grid);
+        List<Point2D> path = aStar.search(start, goal);
 
+        tts.say("Path found!");
         path.forEach(System.out::println);
     }
 
-    static void printGrid(final Node[][] grid) {
+    private static void printGrid(Node[][] grid) {
 
         for (Node[] row : grid) {
             for (Node node : row) {

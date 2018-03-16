@@ -11,7 +11,7 @@ public class Grid {
 
     private final int xNodes, yNodes;
 
-    Grid(final Node[][] grid) {
+    public Grid(Node[][] grid) {
 
         this.xNodes = grid.length;
         this.yNodes = grid[0].length;
@@ -29,7 +29,7 @@ public class Grid {
         return neighbors.stream().filter(Objects::nonNull).collect(Collectors.toList());
     }
 
-    private Node tryGetNode(final int x, final int y) {
+    public Node tryGetNode(final int x, final int y) {
 
         if (x > -1 && x < xNodes && y > -1 && y < yNodes) return grid[x][y];
         else return null;

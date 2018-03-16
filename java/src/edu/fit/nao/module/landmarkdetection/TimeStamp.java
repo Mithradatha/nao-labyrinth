@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class TimeStamp extends ALValue<List> {
 
-    public int seconds;
-    public int microseconds;
+    public final int seconds;
+    public final int microseconds;
 
     public TimeStamp(int seconds, int microseconds) {
 

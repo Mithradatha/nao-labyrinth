@@ -17,22 +17,22 @@ import java.util.List;
 public class Position6D extends ALValue<List> {
 
     // translation (meters)
-    public float x;
-    public float y;
-    public float z;
+    public final float x;
+    public final float y;
+    public final float z;
 
     // rotation (radians)
-    public float wx;
-    public float wy;
-    public float wz;
+    public final float wx;
+    public final float wy;
+    public final float wz;
 
     public Position6D(
-            final float x,
-            final float y,
-            final float z,
-            final float wx,
-            final float wy,
-            final float wz
+            float x,
+            float y,
+            float z,
+            float wx,
+            float wy,
+            float wz
     ) {
         this.x = x;
         this.y = y;

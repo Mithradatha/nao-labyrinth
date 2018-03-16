@@ -6,23 +6,23 @@ import java.io.PrintWriter;
 
 public abstract class Util {
 
-    public static ConnectionInfo ParseOptions(final String[] args, final boolean exitOnFail) {
+    public static ConnectionInfo ParseOptions(String[] args, boolean exitOnFail) {
 
-        final Option pipOption = Option.builder()
+        Option pipOption = Option.builder()
                 .longOpt("pip")
                 .required(true)
                 .hasArg(true)
                 .desc("IP of Nao Robot")
                 .build();
 
-        final Option pportOption = Option.builder()
+        Option pportOption = Option.builder()
                 .longOpt("pport")
                 .required(true)
                 .hasArg(true)
                 .desc("Port of Nao Robot")
                 .build();
 
-        final Options options = new Options();
+        Options options = new Options();
         options.addOption(pipOption);
         options.addOption(pportOption);
 
@@ -30,7 +30,7 @@ public abstract class Util {
 
         try {
 
-            final CommandLineParser parser = new DefaultParser();
+            CommandLineParser parser = new DefaultParser();
             CommandLine line = parser.parse(options, args);
 
             connectionInfo.ip = line.getOptionValue("pip");
@@ -40,8 +40,8 @@ public abstract class Util {
 
             System.err.println(String.format("ERROR: Unable to parse command-line arguments.\n%s\n", ex));
 
-            final HelpFormatter formatter = new HelpFormatter();
-            final PrintWriter writer = new PrintWriter(System.err);
+            HelpFormatter formatter = new HelpFormatter();
+            PrintWriter writer = new PrintWriter(System.err);
 
             formatter.printUsage(writer, 80, "Main", options);
             writer.flush();

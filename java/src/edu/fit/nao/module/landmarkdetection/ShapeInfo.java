@@ -16,20 +16,20 @@ import java.util.List;
  */
 public class ShapeInfo extends ALValue<List> {
 
-    public int one;
-    public float alpha;
-    public float beta;
-    public float sizeX;
-    public float sizeY;
-    public int heading;
+    public final int one;
+    public final float alpha;
+    public final float beta;
+    public final float sizeX;
+    public final float sizeY;
+    public final int heading;
 
     public ShapeInfo(
-            final int one,
-            final float alpha,
-            final float beta,
-            final float sizeX,
-            final float sizeY,
-            final int heading
+            int one,
+            float alpha,
+            float beta,
+            float sizeX,
+            float sizeY,
+            int heading
     ) {
         this.one = one;
         this.alpha = alpha;

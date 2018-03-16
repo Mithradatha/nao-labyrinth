@@ -10,7 +10,6 @@ import java.lang.annotation.Target;
 public @interface Advertise {
 
     String signature();
-
     String description();
 }
 

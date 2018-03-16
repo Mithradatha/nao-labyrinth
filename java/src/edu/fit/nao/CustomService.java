@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 
 public abstract class CustomService extends QiService {
 
-    private String name;
+    private final String name;
 
-    public CustomService(final String name) {
+    public CustomService(String name) {
 
         super();
         this.name = name;
