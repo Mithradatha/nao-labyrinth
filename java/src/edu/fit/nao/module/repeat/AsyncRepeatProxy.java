@@ -6,8 +6,7 @@ import com.aldebaran.qi.helper.ALProxy;
 
 class AsyncRepeatProxy extends ALProxy {
 
-    AsyncRepeatProxy() {
-    }
+    protected AsyncRepeatProxy() {}
 
     public Future<Void> repeat(String str) throws CallError {
 

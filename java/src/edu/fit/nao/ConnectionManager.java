@@ -4,7 +4,13 @@ import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
 
-public abstract class Util {
+public abstract class ConnectionManager {
+
+    public static class ConnectionInfo {
+
+        public String ip;
+        public int port;
+    }
 
     public static ConnectionInfo ParseOptions(String[] args, boolean exitOnFail) {
 

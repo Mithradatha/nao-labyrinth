@@ -14,7 +14,7 @@ import java.util.List;
  * wz
  * }
  */
-public class Position6D extends ALValue<List> {
+public class Position6D extends ALValue {
 
     // translation (meters)
     public final float x;
@@ -42,15 +42,15 @@ public class Position6D extends ALValue<List> {
         this.wz = wz;
     }
 
-    public Position6D(List alValue) {
+    public static Position6D FromALValue(List alValue) {
 
-        this(
-                (float) alValue.get(0),
-                (float) alValue.get(1),
-                (float) alValue.get(2),
-                (float) alValue.get(3),
-                (float) alValue.get(4),
-                (float) alValue.get(5)
-        );
+        float x = (float) alValue.get(0);
+        float y = (float) alValue.get(1);
+        float z = (float) alValue.get(2);
+        float wx = (float) alValue.get(3);
+        float wy = (float) alValue.get(4);
+        float wz = (float) alValue.get(5);
+
+        return new Position6D(x, y, z, wx, wy, wz);
     }
 }

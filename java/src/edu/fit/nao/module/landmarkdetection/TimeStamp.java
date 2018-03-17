@@ -10,7 +10,7 @@ import java.util.List;
  * Timestamp_Microseconds
  * }
  */
-public class TimeStamp extends ALValue<List> {
+public class TimeStamp extends ALValue {
 
     public final int seconds;
     public final int microseconds;
@@ -21,11 +21,11 @@ public class TimeStamp extends ALValue<List> {
         this.microseconds = microseconds;
     }
 
-    public TimeStamp(List alValue) {
+    public static TimeStamp FromALValue(List alValue) {
 
-        this(
-                (int) alValue.get(0),
-                (int) alValue.get(1)
-        );
+        int seconds = (int) alValue.get(0);
+        int microseconds = (int) alValue.get(1);
+
+        return new TimeStamp(seconds, microseconds);
     }
 }

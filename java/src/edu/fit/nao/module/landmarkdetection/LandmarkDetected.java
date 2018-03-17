@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * CurrentCameraName
  * }
  */
-public class LandMarkDetection extends ALValue<List> {
+public class LandmarkDetected extends ALValue {
 
     public final TimeStamp timeStamp;
     public final List<MarkInfo> markInfo;
@@ -24,7 +24,7 @@ public class LandMarkDetection extends ALValue<List> {
     // “CameraTop” or “CameraBottom”
     public final String currentCameraName;
 
-    private LandMarkDetection(
+    private LandmarkDetected(
             TimeStamp timeStamp,
             List<MarkInfo> markInfo,
             Position6D cameraPoseInFrameTorso,
@@ -38,18 +38,17 @@ public class LandMarkDetection extends ALValue<List> {
         this.currentCameraName = currentCameraName;
     }
 
-    public LandMarkDetection(List alValue) {
+    public static LandmarkDetected FromALValue(List alValue) {
 
-        this(
-                new TimeStamp((List) alValue.get(0)),
-                (List<MarkInfo>) ((List) alValue.get(1))
-                        .stream().map(o -> {
-                            return new MarkInfo((List) o);
-                        }).collect(Collectors.toList()),
-                new Position6D((List) alValue.get(2)),
-                new Position6D((List) alValue.get(3)),
-                (String) alValue.get(4)
-        );
+        TimeStamp timeStamp = TimeStamp.FromALValue((List) alValue.get(0));
+        List<MarkInfo> markInfo = (List<MarkInfo>) ((List) alValue.get(1))
+                .stream().map(o -> MarkInfo.FromALValue((List) o)).collect(Collectors.toList());
+
+        Position6D torso = Position6D.FromALValue((List) alValue.get(2));
+        Position6D robot = Position6D.FromALValue((List) alValue.get(3));
+        String currentCameraName = (String) alValue.get(4);
+
+        return new LandmarkDetected(timeStamp, markInfo, torso, robot, currentCameraName);
     }
 }
 

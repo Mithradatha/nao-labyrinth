@@ -10,7 +10,7 @@ import java.util.List;
  * MarkID
  * }
  */
-public class MarkInfo extends ALValue<List> {
+public class MarkInfo extends ALValue {
 
     public final ShapeInfo shapeInfo;
     public final int markID;
@@ -21,11 +21,11 @@ public class MarkInfo extends ALValue<List> {
         this.markID = markID;
     }
 
-    public MarkInfo(List alValue) {
+    public static MarkInfo FromALValue(List alValue) {
 
-        this(
-                new ShapeInfo((List) alValue.get(0)),
-                (int) ((List) alValue.get(1)).get(0)
-        );
+        ShapeInfo shapeInfo = ShapeInfo.FromALValue((List) alValue.get(0));
+        int markID = (int) ((List) alValue.get(1)).get(0);
+
+        return new MarkInfo(shapeInfo, markID);
     }
 }

@@ -14,7 +14,9 @@ public abstract class CustomService extends QiService {
         this.name = name;
     }
 
-    public int registerService(Session session, DynamicObjectBuilder objectBuilder) throws QiException {
+    public int registerService(Session session) throws QiException {
+
+        DynamicObjectBuilder objectBuilder = new DynamicObjectBuilder();
 
         Class<?> oClass = this.getClass();
         Method[] oMethods = oClass.getMethods();

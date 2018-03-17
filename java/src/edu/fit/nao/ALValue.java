@@ -2,9 +2,8 @@ package edu.fit.nao;
 
 import java.lang.reflect.Field;
 
-public abstract class ALValue<T> {
+public abstract class ALValue {
 
-    @Override
     public String toString() {
 
         StringBuilder stringBuilder = new StringBuilder();

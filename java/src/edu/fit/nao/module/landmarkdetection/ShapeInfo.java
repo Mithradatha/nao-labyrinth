@@ -14,7 +14,7 @@ import java.util.List;
  * heading
  * }
  */
-public class ShapeInfo extends ALValue<List> {
+public class ShapeInfo extends ALValue {
 
     public final int one;
     public final float alpha;
@@ -39,15 +39,15 @@ public class ShapeInfo extends ALValue<List> {
         this.heading = heading;
     }
 
-    public ShapeInfo(List alValue) {
+    public static ShapeInfo FromALValue(List alValue) {
 
-        this(
-                (int) alValue.get(0),
-                (float) alValue.get(1),
-                (float) alValue.get(2),
-                (float) alValue.get(3),
-                (float) alValue.get(4),
-                (int) alValue.get(5)
-        );
+        int one = (int) alValue.get(0);
+        float alpha = (float) alValue.get(1);
+        float beta = (float) alValue.get(2);
+        float sizeX = (float) alValue.get(3);
+        float sizeY = (float) alValue.get(4);
+        int heading = (int) alValue.get(5);
+
+        return new ShapeInfo(one, alpha, beta, sizeX, sizeY, heading);
     }
 }

@@ -10,6 +10,7 @@ public class AStar {
         this.grid = new Grid(grid);
     }
 
+    // https://en.wikipedia.org/wiki/A*_search_algorithm
     public List<Point2D> search(Node start, Node goal) {
 
         PriorityQueue<Node> unexplored = new PriorityQueue<>();
@@ -17,8 +18,8 @@ public class AStar {
 
         HashSet<Node> explored = new HashSet<>();
 
-        start.g = 0;
-        start.h = Distance(start, goal);
+        start.accumulatedCost = 0;
+        start.futureCost = Distance(start, goal);
 
         while (!unexplored.isEmpty()) {
 
@@ -34,12 +35,12 @@ public class AStar {
 
                 if (!unexplored.contains(neighbor)) unexplored.add(neighbor);
 
-                int accumulatedPathCost = current.g + 1;
-                if (accumulatedPathCost >= neighbor.g) continue;
+                int predictedCost = current.accumulatedCost + 1;
+                if (predictedCost >= neighbor.accumulatedCost) continue;
 
                 neighbor.parent = current;
-                neighbor.g = accumulatedPathCost;
-                neighbor.h = Distance(neighbor, goal);
+                neighbor.accumulatedCost = predictedCost;
+                neighbor.futureCost = Distance(neighbor, goal);
             }
         }
 

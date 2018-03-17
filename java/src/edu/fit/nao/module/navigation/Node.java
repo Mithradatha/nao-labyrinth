@@ -7,14 +7,14 @@ public class Node implements Comparable<Node> {
 
     public Node parent;
 
-    public int g, h;
+    public int accumulatedCost, futureCost;
 
     public Node(Point2D position, boolean blocked) {
 
         this.position = position;
 
-        this.g = Integer.MAX_VALUE;
-        this.h = Integer.MAX_VALUE;
+        this.accumulatedCost = Integer.MAX_VALUE;
+        this.futureCost = Integer.MAX_VALUE;
 
         this.blocked = blocked;
     }
@@ -31,12 +31,12 @@ public class Node implements Comparable<Node> {
         return blocked;
     }
 
-    private int getF() {
-        return g + h;
+    private int getTotalCost() {
+        return accumulatedCost + futureCost;
     }
 
     @Override
     public int compareTo(Node o) {
-        return this.getF() - o.getF();
+        return this.getTotalCost() - o.getTotalCost();
     }
 }

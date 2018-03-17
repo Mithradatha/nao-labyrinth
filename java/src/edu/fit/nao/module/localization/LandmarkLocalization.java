@@ -1,8 +1,7 @@
 package edu.fit.nao.module.localization;
 
-import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.helper.proxies.ALMotion;
-import edu.fit.nao.module.landmarkdetection.LandMarkDetection;
+import edu.fit.nao.module.landmarkdetection.ShapeInfo;
 
 import java.util.List;
 
@@ -15,33 +14,25 @@ import java.util.List;
  */
 public class LandmarkLocalization {
 
-    private final float landMarkTheoreticalSizeX; // meters
+    private final float landmarkTheoreticalSizeX; // meters
 
     private final ALMotion motion;
 
-    public LandmarkLocalization(ALMotion motion, float landMarkTheoreticalSizeX) {
+    public LandmarkLocalization(ALMotion motion, float landmarkTheoreticalSizeX) {
 
         this.motion = motion;
-        this.landMarkTheoreticalSizeX = landMarkTheoreticalSizeX;
+        this.landmarkTheoreticalSizeX = landmarkTheoreticalSizeX;
     }
 
     // http://doc.aldebaran.com/2-1/dev/python/examples/vision/landmark.html#landmark-localization
-    public Position3D localize(LandMarkDetection landMarkDetection) throws InterruptedException, CallError {
+    public Position3D localize(String currentCamera, ShapeInfo shapeInfo) throws Exception {
 
-        String currentCamera = landMarkDetection.currentCameraName;
+        float distanceFromCameraToLandmark = (float) (landmarkTheoreticalSizeX / (2 * Math.tan(shapeInfo.sizeX / 2)));
 
-        float wzCamera = landMarkDetection.markInfo.get(0).shapeInfo.alpha;
-        float wyCamera = landMarkDetection.markInfo.get(0).shapeInfo.beta;
+        List<Float> floats = motion.getTransform(currentCamera, Frame.ROBOT.ordinal(), true);
+        Transform robotToCamera = new Transform(floats);
 
-        float angularSize = landMarkDetection.markInfo.get(0).shapeInfo.sizeX;
-
-        float distanceFromCameraToLandmark = (float) (landMarkTheoreticalSizeX / (2 * Math.tan(angularSize / 2)));
-
-        // {FRAME_TORSO = 0, FRAME_WORLD = 1, FRAME_ROBOT = 2}
-        List<Float> pFloats = motion.getTransform(currentCamera, 2, true);
-        Transform robotToCamera = new Transform(pFloats);
-
-        Transform cameraToLandmarkRotation = Transform.From3DRotation(0, wyCamera, wzCamera);
+        Transform cameraToLandmarkRotation = Transform.From3DRotation(0, shapeInfo.beta, shapeInfo.alpha);
         Transform cameraToLandmarkTranslation = new Transform(distanceFromCameraToLandmark, 0, 0);
 
         Transform robotToLandmark = robotToCamera
