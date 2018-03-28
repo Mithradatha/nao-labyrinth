@@ -1,3 +1,9 @@
+############################################################
+# Users -> see ModuleRunner for testing existing libraries #
+#                                                          #
+# Developers -> see CustomService, ALProxy for extension   #
+############################################################
+
 # Java Project: java/
 =====================>
 
@@ -126,7 +132,7 @@ Pathfinding algorithm for grid-style map.
 
 >> Grid: Class
 2D-array of Nodes.
-Helper function to retrieve neighbors of given node.
+Helper function to retrieve neighbors of given cell.
 
 >> NavigationRunner: ModuleRunner
 Parse grid map and solve for route using AStar search.
@@ -134,9 +140,9 @@ Print the contents of the map and the path from start to goal.
 
 >> Node: Class
 Stores its own position in the grid, whether or not it is accessible, a 
-pointer to the parent node if it has already been traveled, the 
+pointer to the parent cell if it has already been traveled, the
 accumulated cost so far through the graph, and an estimate of the 
-predicted cost of the path from its current position to some other node.
+predicted cost of the path from its current position to some other cell.
 
 >> Point2D: Class
 Integer x, y position in cartesian coordinates.

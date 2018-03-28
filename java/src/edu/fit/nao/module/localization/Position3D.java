@@ -2,6 +2,7 @@ package edu.fit.nao.module.localization;
 
 public class Position3D {
 
+    // translation (meters)
     public final float x;
     public final float y;
     public final float z;

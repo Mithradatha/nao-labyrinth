@@ -1,15 +1,15 @@
 package edu.fit.nao.module.navigation;
 
-public class Node implements Comparable<Node> {
+public class Cell implements Comparable<Cell> {
 
     public final Point2D position;
     private final boolean blocked;
 
-    public Node parent;
+    public Cell parent;
 
     public int accumulatedCost, futureCost;
 
-    public Node(Point2D position, boolean blocked) {
+    public Cell(Point2D position, boolean blocked) {
 
         this.position = position;
 
@@ -19,11 +19,11 @@ public class Node implements Comparable<Node> {
         this.blocked = blocked;
     }
 
-    public Node(int x, int y, boolean blocked) {
+    public Cell(int x, int y, boolean blocked) {
         this(new Point2D(x, y), blocked);
     }
 
-    public Node(int x, int y) {
+    public Cell(int x, int y) {
         this(x, y, false);
     }
 
@@ -36,7 +36,7 @@ public class Node implements Comparable<Node> {
     }
 
     @Override
-    public int compareTo(Node o) {
+    public int compareTo(Cell o) {
         return this.getTotalCost() - o.getTotalCost();
     }
 }

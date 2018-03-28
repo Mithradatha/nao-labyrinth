@@ -74,6 +74,26 @@ public class Transform implements Cloneable {
         return new Position3D(this.r1_c4, this.r2_c4, this.r3_c4);
     }
 
+    public Orientation3D rotation() {
+
+        return new Orientation3D(getRotX(), getRotY(), getRotZ());
+    }
+
+    public float getRotZ() {
+
+        return (float) Math.atan2(this.r2_c1, this.r1_c1);
+    }
+
+    public float getRotY() {
+
+        return (float) Math.atan2(-this.r3_c1, Math.sqrt(Math.pow(this.r3_c2, 2) + Math.pow(this.r3_c3, 2)));
+    }
+
+    public float getRotX() {
+
+        return (float) Math.atan2(this.r3_c2, this.r3_c3);
+    }
+
     // euler angle in radians
     public Transform from3DRotation(float wx, float wy, float wz) {
 
@@ -224,13 +244,13 @@ public class Transform implements Cloneable {
     @Override
     public String toString() {
 
-        return  "| " + norm(r1_c1) + ' ' + norm(r1_c2) + ' ' + norm(r1_c3) + ' ' + norm(r1_c4) + " |\n" +
-                "| " + norm(r2_c1) + ' ' + norm(r2_c2) + ' ' + norm(r2_c3) + ' ' + norm(r2_c4) + " |\n" +
-                "| " + norm(r3_c1) + ' ' + norm(r3_c2) + ' ' + norm(r3_c3) + ' ' + norm(r3_c4) + " |\n" +
+        return  "| " + prefix(r1_c1) + ' ' + prefix(r1_c2) + ' ' + prefix(r1_c3) + ' ' + prefix(r1_c4) + " |\n" +
+                "| " + prefix(r2_c1) + ' ' + prefix(r2_c2) + ' ' + prefix(r2_c3) + ' ' + prefix(r2_c4) + " |\n" +
+                "| " + prefix(r3_c1) + ' ' + prefix(r3_c2) + ' ' + prefix(r3_c3) + ' ' + prefix(r3_c4) + " |\n" +
                 "| +0.0 +0.0 +0.0 +1.0 |\n";
     }
 
-    private String norm(Float f) { return (f < 0) ? f.toString() : "+" + f; }
+    private String prefix(Float f) { return (f < 0) ? f.toString() : "+" + f; }
 
     public static void main(String... args) {
 

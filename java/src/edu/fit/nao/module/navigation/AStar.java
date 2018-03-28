@@ -6,30 +6,30 @@ public class AStar {
 
     private final Grid grid;
 
-    public AStar(Node[][] grid) {
+    public AStar(Cell[][] grid) {
         this.grid = new Grid(grid);
     }
 
     // https://en.wikipedia.org/wiki/A*_search_algorithm
-    public List<Point2D> search(Node start, Node goal) {
+    public List<Point2D> search(Cell start, Cell goal) {
 
-        PriorityQueue<Node> unexplored = new PriorityQueue<>();
+        PriorityQueue<Cell> unexplored = new PriorityQueue<>();
         unexplored.add(start);
 
-        HashSet<Node> explored = new HashSet<>();
+        HashSet<Cell> explored = new HashSet<>();
 
         start.accumulatedCost = 0;
         start.futureCost = Distance(start, goal);
 
         while (!unexplored.isEmpty()) {
 
-            Node current = unexplored.peek();
+            Cell current = unexplored.peek();
             if (current == goal) return Trace(current);
 
             unexplored.remove(current);
             explored.add(current);
 
-            for (Node neighbor : grid.getNeighbors(current)) {
+            for (Cell neighbor : grid.getNeighbors(current)) {
 
                 if (explored.contains(neighbor) || neighbor.isBlocked()) continue;
 
@@ -47,7 +47,7 @@ public class AStar {
         return null;
     }
 
-    private static List<Point2D> Trace(Node current) {
+    private static List<Point2D> Trace(Cell current) {
 
         List<Point2D> path = new ArrayList<>();
         path.add(current.position);
@@ -62,7 +62,7 @@ public class AStar {
         return path;
     }
 
-    private static int Distance(Node a, Node b) {
+    private static int Distance(Cell a, Cell b) {
 
         // Manhattan Distance
         return Math.abs(a.position.x - b.position.x) + Math.abs(a.position.y - b.position.y);

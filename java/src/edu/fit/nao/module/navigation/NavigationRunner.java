@@ -10,17 +10,17 @@ import java.util.List;
 
 public class NavigationRunner extends ModuleRunner {
 
-    private final int xNodes;
-    private final int yNodes;
+    private final int xCells;
+    private final int yCells;
 
     private final String fileName;
 
-    public NavigationRunner(Session session, int xNodes, int yNodes, String fileName) {
+    public NavigationRunner(Session session, int xCells, int yCells, String fileName) {
 
         super(session);
 
-        this.xNodes = xNodes;
-        this.yNodes = yNodes;
+        this.xCells = xCells;
+        this.yCells = yCells;
         this.fileName = fileName;
     }
 
@@ -29,8 +29,8 @@ public class NavigationRunner extends ModuleRunner {
 
         ALTextToSpeech tts = new ALTextToSpeech(session);
 
-        Node[][] grid = new Node[xNodes][yNodes];
-        Node start = null, goal = null;
+        Cell[][] grid = new Cell[xCells][yCells];
+        Cell start = null, goal = null;
 
         int x = 0, y = 0;
 
@@ -43,27 +43,27 @@ public class NavigationRunner extends ModuleRunner {
 
                 switch (c) {
                     case 'x':
-                        grid[x][y] = new Node(x, y++, true);
+                        grid[x][y] = new Cell(x, y++, true);
                         break;
                     case 'o':
-                        grid[x][y] = new Node(x, y++);
+                        grid[x][y] = new Cell(x, y++);
                         break;
                     case '\n':
                         x++;
                         y = 0;
                         break;
                     case 's':
-                        start = new Node(x, y);
+                        start = new Cell(x, y);
                         grid[x][y++] = start;
                         break;
                     case 'f':
-                        goal = new Node(x, y);
+                        goal = new Cell(x, y);
                         grid[x][y++] = goal;
                         break;
                 }
             }
 
-            if (x != xNodes) throw new Exception("File Format Exception");
+            if (x != xCells) throw new Exception("File Format Exception");
         }
 
         printGrid(grid);
@@ -75,12 +75,12 @@ public class NavigationRunner extends ModuleRunner {
         path.forEach(System.out::println);
     }
 
-    private static void printGrid(Node[][] grid) {
+    private static void printGrid(Cell[][] grid) {
 
-        for (Node[] row : grid) {
-            for (Node node : row) {
+        for (Cell[] row : grid) {
+            for (Cell cell : row) {
 
-                System.out.print((node.isBlocked()) ? 'x' : '_');
+                System.out.print((cell.isBlocked()) ? 'x' : '_');
                 System.out.print(' ');
             }
             System.out.println();

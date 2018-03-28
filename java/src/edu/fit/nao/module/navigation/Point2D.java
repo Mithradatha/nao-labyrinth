@@ -2,6 +2,7 @@ package edu.fit.nao.module.navigation;
 
 public class Point2D {
 
+    // coordinates
     public final int x;
     public final int y;
 
@@ -9,6 +10,14 @@ public class Point2D {
 
         this.x = x;
         this.y = y;
+    }
+
+    public float angleFrom(Point2D other) {
+        return (float) Math.atan((this.y - other.y) / (this.x - other.x));
+    }
+
+    public float distanceFrom(Point2D other) {
+        return (float) Math.pow(Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2), 0.5);
     }
 
     @Override

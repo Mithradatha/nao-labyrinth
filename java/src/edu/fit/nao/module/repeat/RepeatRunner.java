@@ -41,5 +41,7 @@ public class RepeatRunner extends ModuleRunner {
 
             repeat.repeat("Bye, Bye.");
         }
+
+        System.exit(0);
     }
 }

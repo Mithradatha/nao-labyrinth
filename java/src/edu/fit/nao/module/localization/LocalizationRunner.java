@@ -1,6 +1,7 @@
 package edu.fit.nao.module.localization;
 
 import com.aldebaran.qi.Session;
+import com.aldebaran.qi.helper.proxies.ALAutonomousLife;
 import com.aldebaran.qi.helper.proxies.ALMotion;
 import edu.fit.nao.ModuleRunner;
 import edu.fit.nao.module.landmarkdetection.LandmarkDetected;
@@ -20,6 +21,9 @@ public class LocalizationRunner extends ModuleRunner {
 
     @Override
     public void run() throws Exception {
+
+        ALAutonomousLife life = new ALAutonomousLife(session);
+        life.setState("disabled");
 
         ALMotion motion = new ALMotion(session);
 

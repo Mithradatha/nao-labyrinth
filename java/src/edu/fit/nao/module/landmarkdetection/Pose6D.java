@@ -5,7 +5,7 @@ import edu.fit.nao.ALValue;
 import java.util.List;
 
 /**
- * Position6D {
+ * Pose6D {
  * x,
  * y,
  * z,
@@ -14,19 +14,19 @@ import java.util.List;
  * wz
  * }
  */
-public class Position6D extends ALValue {
+public class Pose6D extends ALValue {
 
-    // translation (meters)
+    // position (meters)
     public final float x;
     public final float y;
     public final float z;
 
-    // rotation (radians)
+    // orientation (radians)
     public final float wx;
     public final float wy;
     public final float wz;
 
-    public Position6D(
+    public Pose6D(
             float x,
             float y,
             float z,
@@ -42,7 +42,7 @@ public class Position6D extends ALValue {
         this.wz = wz;
     }
 
-    public static Position6D FromALValue(List alValue) {
+    public static Pose6D FromALValue(List alValue) {
 
         float x = (float) alValue.get(0);
         float y = (float) alValue.get(1);
@@ -51,6 +51,6 @@ public class Position6D extends ALValue {
         float wy = (float) alValue.get(4);
         float wz = (float) alValue.get(5);
 
-        return new Position6D(x, y, z, wx, wy, wz);
+        return new Pose6D(x, y, z, wx, wy, wz);
     }
 }
