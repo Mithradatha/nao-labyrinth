@@ -1,6 +1,8 @@
 package edu.fit.nao.module.localization;
 
 import com.aldebaran.qi.helper.proxies.ALMotion;
+import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.module.geometry.Transform;
 import edu.fit.nao.module.landmarkdetection.ShapeInfo;
 
 import java.util.List;
@@ -25,7 +27,7 @@ public class LandmarkLocalization {
     }
 
     // http://doc.aldebaran.com/2-1/dev/python/examples/vision/landmark.html#landmark-localization
-    public Position3D localize(String currentCamera, ShapeInfo shapeInfo) throws Exception {
+    public Pose2D localize(String currentCamera, ShapeInfo shapeInfo) throws Exception {
 
         float distanceFromCameraToLandmark = (float) (landmarkTheoreticalSizeX / (2 * Math.tan(shapeInfo.sizeX / 2)));
 
@@ -39,6 +41,6 @@ public class LandmarkLocalization {
                 .matrixMultiply(cameraToLandmarkRotation)
                 .matrixMultiply(cameraToLandmarkTranslation);
 
-        return robotToLandmark.translation();
+        return robotToLandmark.pose2D();
     }
 }

@@ -1,5 +1,7 @@
 package edu.fit.nao.module.navigation;
 
+import edu.fit.nao.module.geometry.Point2D;
+
 public class Cell implements Comparable<Cell> {
 
     public final Point2D position;

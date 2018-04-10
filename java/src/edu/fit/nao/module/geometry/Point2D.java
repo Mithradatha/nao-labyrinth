@@ -1,4 +1,4 @@
-package edu.fit.nao.module.navigation;
+package edu.fit.nao.module.geometry;
 
 public class Point2D {
 
@@ -13,15 +13,21 @@ public class Point2D {
     }
 
     public float angleFrom(Point2D other) {
+
         return (float) Math.atan((this.y - other.y) / (this.x - other.x));
     }
 
     public float distanceFrom(Point2D other) {
+
         return (float) Math.pow(Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2), 0.5);
     }
 
     @Override
     public String toString() {
-        return String.format("[%d, %d]", x, y);
+
+        return "Point2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

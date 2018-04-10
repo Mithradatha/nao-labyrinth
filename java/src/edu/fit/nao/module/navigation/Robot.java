@@ -1,6 +1,6 @@
 package edu.fit.nao.module.navigation;
 
-import edu.fit.nao.module.localization.Pose2D;
+import edu.fit.nao.module.geometry.Pose2D;
 
 /**
  * Weighted mean for pose estimation

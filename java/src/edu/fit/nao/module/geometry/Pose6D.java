@@ -1,4 +1,4 @@
-package edu.fit.nao.module.landmarkdetection;
+package edu.fit.nao.module.geometry;
 
 import edu.fit.nao.ALValue;
 

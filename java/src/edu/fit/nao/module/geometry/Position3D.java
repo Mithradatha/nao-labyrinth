@@ -1,4 +1,4 @@
-package edu.fit.nao.module.localization;
+package edu.fit.nao.module.geometry;
 
 public class Position3D {
 
@@ -16,6 +16,11 @@ public class Position3D {
 
     @Override
     public String toString() {
-        return String.format("[%.3f, %.3f, %.3f]", x, y, z);
+
+        return "Position3D{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
     }
 }

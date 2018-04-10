@@ -1,5 +1,6 @@
 package edu.fit.nao.module.landmarkdetection;
 
+import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.ALProxy;
 import com.aldebaran.qi.helper.EventCallback;
@@ -15,21 +16,24 @@ public class LandmarkDetectionProxy extends ALProxy {
         this.memory = new ALMemory(session);
     }
 
-    public long subscribe(EventCallback callback) throws Exception {
+    // LandMarkDetection extractor: period=30 (ms), precision=1
+    public void subscribe(String name) throws CallError, InterruptedException {
 
-        // LandMarkDetection extractor: period=30 (ms), precision=1
-        this.call("subscribe", "Proxy_LandmarkDetected").get();
+        this.call("subscribe", name).get();
+    }
 
-        // returns subscriber number
+    public void unsubscribe(String name) throws CallError, InterruptedException {
+
+        this.call("unsubscribe", name).get();
+    }
+
+    public long subscribeToLandmarkDetected(EventCallback callback) throws Exception {
+
         return memory.subscribeToEvent("LandmarkDetected", callback);
     }
 
-    public long subscribe(String callbackSignature, Object callbackObject) throws Exception {
+    public long subscribeToLandmarkDetected(String callbackSignature, Object callbackObject) throws Exception {
 
-        // LandMarkDetection extractor: period=30 (ms), precision=1
-        this.call("subscribe", "Proxy_LandmarkDetected").get();
-
-        // returns subscriber number
         return memory.subscribeToEvent("LandmarkDetected", callbackSignature, callbackObject);
     }
 }

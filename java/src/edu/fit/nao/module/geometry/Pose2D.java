@@ -1,4 +1,4 @@
-package edu.fit.nao.module.localization;
+package edu.fit.nao.module.geometry;
 
 import java.util.List;
 
@@ -29,10 +29,12 @@ public class Pose2D {
     }
 
     public Pose2D add(Pose2D other) {
+
         return new Pose2D(this.x + other.x, this.y + other.y, this.theta + other.theta);
     }
 
     public Pose2D subtract(Pose2D other) {
+
         return new Pose2D(this.x - other.x, this.y - other.y, this.theta - other.theta);
     }
 
@@ -46,24 +48,34 @@ public class Pose2D {
     }
 
     public Pose2D scale(float multiplier) {
+
         return new Pose2D(this.x * multiplier, this.y * multiplier, this.theta * multiplier);
     }
 
     public float norm() {
+
         return (float) Math.sqrt(this.x * this.x + this.y * this.y);
     }
 
     public float getAngle() {
+
         return (float) Math.atan2(this.y, this.x);
     }
 
     public float distance(Pose2D other) {
+
         return (float) Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+    }
+
+    public float tan() {
+
+        return (float) Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
 
     public boolean isNear(Pose2D other) { return isNear(other, 0.0001f); }
 
     public boolean isNear(Pose2D other, float epsilon) {
+
         return this.distance(other) < epsilon;
     }
 
@@ -76,6 +88,7 @@ public class Pose2D {
     }
 
     public Pose2D diff(Pose2D other) {
+
         return this.inverse().multiply(other);
     }
 
@@ -90,6 +103,10 @@ public class Pose2D {
     @Override
     public String toString() {
 
-        return String.format("[%.3f, %.3f, %.3f]", x, y, theta);
+        return "Pose2D{" +
+                "x=" + x +
+                ", y=" + y +
+                ", theta=" + theta +
+                '}';
     }
 }

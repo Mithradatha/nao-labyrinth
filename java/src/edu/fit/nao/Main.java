@@ -3,7 +3,9 @@ package edu.fit.nao;
 import com.aldebaran.qi.Application;
 import com.aldebaran.qi.Session;
 import edu.fit.nao.module.localization.LocalizationRunner;
+import edu.fit.nao.module.motion.MotionRunner;
 import edu.fit.nao.module.navigation.NavigationRunner;
+import edu.fit.nao.module.perception.PerceptionRunner;
 import edu.fit.nao.module.repeat.RepeatRunner;
 
 import java.nio.file.Paths;
@@ -22,6 +24,8 @@ public class Main {
             application.start();
             Session session = application.session();
 
+            Perception(session);
+            // Motion(session);
             // Repeat(session);
             // Navigation(session);
             // Localization(session);
@@ -29,6 +33,18 @@ public class Main {
             application.run();
 
         } catch (Exception ex) { ex.printStackTrace(); }
+    }
+
+    private static void Perception(Session session) throws Exception {
+
+        ModuleRunner perception = new PerceptionRunner(session);
+        perception.run();
+    }
+
+    private static void Motion(Session session) throws  Exception {
+
+        ModuleRunner motion = new MotionRunner(session);
+        motion.run();
     }
 
     private static void Repeat(Session session) throws Exception {

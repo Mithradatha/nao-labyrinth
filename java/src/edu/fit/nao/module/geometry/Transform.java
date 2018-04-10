@@ -1,4 +1,4 @@
-package edu.fit.nao.module.localization;
+package edu.fit.nao.module.geometry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,6 +77,16 @@ public class Transform implements Cloneable {
     public Orientation3D rotation() {
 
         return new Orientation3D(getRotX(), getRotY(), getRotZ());
+    }
+
+    public Pose6D pose6D() {
+
+        return new Pose6D(this.r1_c4, this.r2_c4, this.r3_c4, getRotX(), getRotY(), getRotZ());
+    }
+
+    public Pose2D pose2D() {
+
+        return new Pose2D(this.r1_c4, this.r2_c4, getRotZ());
     }
 
     public float getRotZ() {
