@@ -147,6 +147,31 @@ public class Transform implements Cloneable {
         return transform;
     }
 
+    // z axis rotation angle in radians
+    public Transform fromRotZTranspose(float rotZ) {
+
+        Transform transform = this.clone();
+
+        transform.r1_c1 = (float) Math.cos(rotZ);
+        transform.r1_c2 = (float) Math.sin(rotZ);
+        transform.r2_c1 = (float) (-1 * Math.sin(rotZ));
+        transform.r2_c2 = (float) Math.cos(rotZ);
+
+        return transform;
+    }
+
+    // z axis rotation angle in radians
+    public static Transform FromRotZTranspose(float rotZ) {
+
+        Transform transform = new Transform();
+        transform.r1_c1 = (float) Math.cos(rotZ);
+        transform.r1_c2 = (float) Math.sin(rotZ);
+        transform.r2_c1 = (float) (-1 * Math.sin(rotZ));
+        transform.r2_c2 = (float) Math.cos(rotZ);
+
+        return transform;
+    }
+
     // y axis rotation angle in radians
     public Transform fromRotY(float rotY) {
 

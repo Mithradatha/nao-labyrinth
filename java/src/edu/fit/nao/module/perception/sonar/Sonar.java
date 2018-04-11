@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Frequency: 40kHz
- * Effective cone: 60°
+ * Effective cone: 60° (30 on each side)
  * Resolution: [0.1, 0.4] (meters)
  * <p>
  * Hardware detection range: [0.2, 0.8] (meters)

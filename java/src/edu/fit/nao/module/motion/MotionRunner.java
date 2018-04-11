@@ -43,7 +43,7 @@ public class MotionRunner extends ModuleRunner {
         // life.setState("disabled");
 
         // motion.wakeUp();
-        // posture.goToPosture("StandInit", 0.25f);
+        // posture.goToPosture("StandInit", 0.8f);
 
         /* INERTIAL_UNIT */
         ALMemory memory = new ALMemory(this.session);

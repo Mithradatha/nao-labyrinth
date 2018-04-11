@@ -3,7 +3,7 @@ package edu.fit.nao.module.localization;
 import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.proxies.ALMotion;
 import edu.fit.nao.ModuleRunner;
-import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.module.geometry.Position3D;
 import edu.fit.nao.module.landmarkdetection.LandmarkDetected;
 import edu.fit.nao.module.landmarkdetection.LandmarkDetectionProxy;
 
@@ -42,7 +42,9 @@ public class LocalizationRunner extends ModuleRunner {
 
                     try {
 
-                        Pose2D displacement = localization.localize(currentCamera, markInfo.shapeInfo);
+                        Position3D displacement = localization
+                                .landmarkPositionInRobotFrame(currentCamera, markInfo.shapeInfo);
+
                         System.out.println(markInfo.markID + ": " + displacement.toString());
 
                     } catch (Exception ex) { ex.printStackTrace(); }

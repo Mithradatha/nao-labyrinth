@@ -1,6 +1,6 @@
 package edu.fit.nao.module.perception.camera;
 
-import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.module.geometry.Position3D;
 import edu.fit.nao.module.landmarkdetection.LandmarkDetected;
 import edu.fit.nao.module.localization.LandmarkLocalization;
 import edu.fit.nao.module.perception.EventList;
@@ -38,7 +38,8 @@ public class CameraListener {
 
                 try {
 
-                    Pose2D displacement = localization.localize(currentCamera, markInfo.shapeInfo);
+                    Position3D displacement = localization
+                            .landmarkPositionInRobotFrame(currentCamera, markInfo.shapeInfo);
 
                     CameraEvent event = new CameraEvent(markInfo.markID, displacement);
                     TimestampedData<CameraEvent> data = new TimestampedData<>(seconds, millis, event);

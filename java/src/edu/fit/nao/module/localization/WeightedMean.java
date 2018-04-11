@@ -1,12 +1,13 @@
-package edu.fit.nao.module.navigation;
+package edu.fit.nao.module.localization;
 
 import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.module.navigation.Grid;
 
 /**
  * Weighted mean for pose estimation
  * Bayes filter for pose confidence
  */
-public class Robot {
+public class WeightedMean {
 
     private final float sensorWeight; // e.g. 0.7f
     private final float confidenceWithoutSensor; // e.g. 0.8f
@@ -19,7 +20,7 @@ public class Robot {
 
     private Grid map;
 
-    public Robot(Grid map, float sensorWeight, float confidenceWithSensor) {
+    public WeightedMean(Grid map, float sensorWeight, float confidenceWithSensor) {
 
         this.map = map;
 
@@ -46,30 +47,4 @@ public class Robot {
         float prior = confidenceWithoutSensor * confidence;
         this.confidence = prior / (prior + (1 - confidenceWithoutSensor) * (1 - confidence));
     }
-
-//    // add uncertainty
-//    public void actionUpdate(encoderValues, priorBelief) {
-//
-//        this.newBelief = Act(encoderValues, priorBelief);
-//    }
-//
-//    // update belief
-//    public void perceptionUpdate(sensorValues, newBelief) {
-//
-//        this.belief = See(sensorValues, newBelief);
-//    }
-//
-//    // location from set of all possible locations L
-//    public float bayesianProbability(location, sensorValues) {
-//
-//        //return (p(sensorValues | location) * p(location)) / p(sensorValues);
-//        return (p(sensorValues | location) * p(location));
-//    }
-//
-//    foreach(l : L -> baysianProbability(l, sensorValues)).then(renorm(1.0, p(l) in L));
-//
-//    public void Act(encoderValues, newBelief) {
-//
-//        return sum(beliefs.foreach(priorBelief -> p(newBelief | encoderValues, priorBelief) * p(priorBelief)));
-//    }
 }

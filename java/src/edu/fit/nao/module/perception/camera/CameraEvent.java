@@ -1,13 +1,13 @@
 package edu.fit.nao.module.perception.camera;
 
-import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.module.geometry.Position3D;
 
 public class CameraEvent {
 
     public int landmarkId;
-    public Pose2D displacement;
+    public Position3D displacement;
 
-    public CameraEvent(int landmarkId, Pose2D displacement) {
+    public CameraEvent(int landmarkId, Position3D displacement) {
 
         this.landmarkId = landmarkId;
         this.displacement = displacement;

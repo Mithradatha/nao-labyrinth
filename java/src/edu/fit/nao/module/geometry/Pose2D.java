@@ -28,6 +28,11 @@ public class Pose2D {
         this.theta = floats.get(2);
     }
 
+    public Position2D getPosition() {
+
+        return new Position2D(x, y);
+    }
+
     public Pose2D add(Pose2D other) {
 
         return new Pose2D(this.x + other.x, this.y + other.y, this.theta + other.theta);

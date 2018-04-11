@@ -4,6 +4,7 @@ import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.helper.proxies.ALMemory;
 
 /**
+ * IMU:
  * Gyroscope -> [wx, wy], angular speed = ~500 degrees / second
  * Accelerometer -> [x, y, z], acceleration = ~19.62 meters / second
  * <p>

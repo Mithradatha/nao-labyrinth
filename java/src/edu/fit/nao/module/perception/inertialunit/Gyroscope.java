@@ -2,6 +2,9 @@ package edu.fit.nao.module.perception.inertialunit;
 
 /**
  * radians per second (float)
+ * <p>
+ * Once the z axis is provided by Aldebaran,
+ * it can be used for the robot's orientation
  */
 public class Gyroscope {
 

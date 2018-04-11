@@ -4,6 +4,10 @@ import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.helper.EventCallback;
 import edu.fit.nao.module.landmarkdetection.LandmarkDetectionProxy;
 
+/**
+ * The two CMOS cameras cannot be used as stereo because
+ * their field of view (FOV) does not overlap.
+ */
 public class Camera {
 
     private LandmarkDetectionProxy lmd;
