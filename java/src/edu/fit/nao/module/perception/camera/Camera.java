@@ -2,7 +2,7 @@ package edu.fit.nao.module.perception.camera;
 
 import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.helper.EventCallback;
-import edu.fit.nao.module.landmarkdetection.LandmarkDetectionProxy;
+import edu.fit.nao.helper.proxies.LandmarkDetectionProxy;
 
 /**
  * The two CMOS cameras cannot be used as stereo because

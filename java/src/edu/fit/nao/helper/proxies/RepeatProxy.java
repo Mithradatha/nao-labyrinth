@@ -1,4 +1,4 @@
-package edu.fit.nao.module.repeat;
+package edu.fit.nao.helper.proxies;
 
 import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.Session;
@@ -19,8 +19,8 @@ public class RepeatProxy extends ALProxy {
         return this.asyncRepeatProxy;
     }
 
-    public void repeat(String str) throws CallError, InterruptedException {
+    public void repeat(String stringToRepeat) throws CallError, InterruptedException {
 
-        this.call("repeat", str).get();
+        this.call("repeat", stringToRepeat).get();
     }
 }

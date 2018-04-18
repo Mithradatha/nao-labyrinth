@@ -1,7 +1,7 @@
 package edu.fit.nao.module.perception.camera;
 
-import edu.fit.nao.module.geometry.Position3D;
-import edu.fit.nao.module.landmarkdetection.LandmarkDetected;
+import edu.fit.nao.helper.geometry.Position3D;
+import edu.fit.nao.helper.landmarkdetection.LandmarkDetected;
 import edu.fit.nao.module.localization.LandmarkLocalization;
 import edu.fit.nao.module.perception.EventList;
 import edu.fit.nao.module.perception.TimestampedData;

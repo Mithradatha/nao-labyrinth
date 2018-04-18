@@ -1,6 +1,6 @@
-package edu.fit.nao.module.geometry;
+package edu.fit.nao.helper.geometry;
 
-import edu.fit.nao.ALValue;
+import edu.fit.nao.helper.ALValue;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package edu.fit.nao.module.perception;
 
 import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.proxies.*;
-import edu.fit.nao.ModuleRunner;
-import edu.fit.nao.module.landmarkdetection.LandmarkDetectionProxy;
+import edu.fit.nao.helper.ModuleRunner;
+import edu.fit.nao.helper.proxies.LandmarkDetectionProxy;
 import edu.fit.nao.module.localization.LandmarkLocalization;
 import edu.fit.nao.module.perception.camera.Camera;
 import edu.fit.nao.module.perception.camera.CameraListener;
@@ -36,7 +36,7 @@ public class PerceptionRunner extends ModuleRunner {
         SonarListener sonarListener = new SonarListener();
         sonarListener.attachTo(sonar);
 
-        sonar.start();
+        // sonar.start();
 
         /* INERTIAL_UNIT */
         ALMemory memory = new ALMemory(this.session);
@@ -60,11 +60,11 @@ public class PerceptionRunner extends ModuleRunner {
             @Override
             public void run() {
 
-                System.out.println(sonarListener);
-                System.out.println(inertialUnit);
+                // System.out.println(sonarListener);
+                // System.out.println(inertialUnit);
                 System.out.println(cameraListener);
 
-                sonarListener.events.clear();
+                // sonarListener.events.clear();
                 cameraListener.events.clear();
             }
         }, 0, 1000 * PERIOD);

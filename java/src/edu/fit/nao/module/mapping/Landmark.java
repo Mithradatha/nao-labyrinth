@@ -1,6 +1,6 @@
 package edu.fit.nao.module.mapping;
 
-import edu.fit.nao.module.geometry.Position2D;
+import edu.fit.nao.helper.geometry.Position2D;
 
 public class Landmark {
 

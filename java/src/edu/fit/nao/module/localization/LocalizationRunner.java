@@ -2,10 +2,10 @@ package edu.fit.nao.module.localization;
 
 import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.proxies.ALMotion;
-import edu.fit.nao.ModuleRunner;
-import edu.fit.nao.module.geometry.Position3D;
-import edu.fit.nao.module.landmarkdetection.LandmarkDetected;
-import edu.fit.nao.module.landmarkdetection.LandmarkDetectionProxy;
+import edu.fit.nao.helper.ModuleRunner;
+import edu.fit.nao.helper.geometry.Position3D;
+import edu.fit.nao.helper.landmarkdetection.LandmarkDetected;
+import edu.fit.nao.helper.proxies.LandmarkDetectionProxy;
 
 import java.util.List;
 

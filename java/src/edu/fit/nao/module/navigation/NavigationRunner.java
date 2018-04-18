@@ -2,8 +2,8 @@ package edu.fit.nao.module.navigation;
 
 import com.aldebaran.qi.Session;
 import com.aldebaran.qi.helper.proxies.ALTextToSpeech;
-import edu.fit.nao.ModuleRunner;
-import edu.fit.nao.module.geometry.Point2D;
+import edu.fit.nao.helper.ModuleRunner;
+import edu.fit.nao.helper.geometry.Point2D;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

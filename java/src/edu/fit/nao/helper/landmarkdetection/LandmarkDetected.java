@@ -1,7 +1,7 @@
-package edu.fit.nao.module.landmarkdetection;
+package edu.fit.nao.helper.landmarkdetection;
 
-import edu.fit.nao.ALValue;
-import edu.fit.nao.module.geometry.Pose6D;
+import edu.fit.nao.helper.ALValue;
+import edu.fit.nao.helper.geometry.Pose6D;
 
 import java.util.List;
 import java.util.stream.Collectors;

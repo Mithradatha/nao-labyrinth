@@ -1,4 +1,4 @@
-package edu.fit.nao;
+package edu.fit.nao.helper;
 
 import java.lang.reflect.Field;
 

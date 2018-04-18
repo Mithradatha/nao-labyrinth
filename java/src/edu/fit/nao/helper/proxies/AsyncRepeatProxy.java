@@ -1,4 +1,4 @@
-package edu.fit.nao.module.repeat;
+package edu.fit.nao.helper.proxies;
 
 import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.Future;
@@ -8,8 +8,8 @@ class AsyncRepeatProxy extends ALProxy {
 
     protected AsyncRepeatProxy() {}
 
-    public Future<Void> repeat(String str) throws CallError {
+    public Future<Void> repeat(String stringToRepeat) throws CallError {
 
-        return this.call("repeat", str);
+        return this.call("repeat", stringToRepeat);
     }
 }

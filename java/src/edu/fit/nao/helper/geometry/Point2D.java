@@ -1,4 +1,4 @@
-package edu.fit.nao.module.geometry;
+package edu.fit.nao.helper.geometry;
 
 public class Point2D {
 

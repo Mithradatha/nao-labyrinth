@@ -1,11 +1,11 @@
 package edu.fit.nao.module.localization;
 
 import com.aldebaran.qi.helper.proxies.ALMotion;
-import edu.fit.nao.module.geometry.Pose2D;
-import edu.fit.nao.module.geometry.Position2D;
-import edu.fit.nao.module.geometry.Position3D;
-import edu.fit.nao.module.geometry.Transform;
-import edu.fit.nao.module.landmarkdetection.ShapeInfo;
+import edu.fit.nao.helper.geometry.Pose2D;
+import edu.fit.nao.helper.geometry.Position2D;
+import edu.fit.nao.helper.geometry.Position3D;
+import edu.fit.nao.helper.geometry.Transform;
+import edu.fit.nao.helper.landmarkdetection.ShapeInfo;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package edu.fit.nao.module.localization;
 
-import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.helper.geometry.Pose2D;
 import edu.fit.nao.module.mapping.Landmark;
 
 import java.util.ArrayList;

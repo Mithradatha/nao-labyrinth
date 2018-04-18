@@ -1,0 +1,153 @@
+<title>Documentation</title>
+<!-- syntax highlighting via hilite.me 
+Language: Java
+Style: default
+Line numbers: unchecked
+CSS: border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;
+-->
+
+<h1>Getting Started
+    <a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#getting-started">¶</a></h1>
+
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">tutorial</span><span style="color:
+        #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.Application</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.Session</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">edu.fit.nao.helper.ConnectionManager</span><span style="color: #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">class</span> <span style="color: #0000FF; font-weight: bold ">BareBones</span> <span style="color: #666666 ">{</span>
+
+    <span style="color: #408080; font-style: italic ">// cmd args: --pip &lt;ip&gt; --pport &lt;port&gt;</span>
+    <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">static</span> <span style="color: #B00040 ">void</span> <span style="color: #0000FF ">main</span><span style="color: #666666
+        ">(</span>String<span style="color: #666666 ">[]</span> args<span style="color: #666666 ">)</span> <span style="color: #666666 ">{</span>
+
+        <span style="color: #008000; font-weight: bold ">try</span> <span style="color: #666666 ">{</span>
+
+            <span style="color: #408080; font-style: italic ">// parse command line arguments using commons-cli (found in lib folder)</span>
+            ConnectionManager<span style="color: #666666 ">.</span><span style="color: #7D9029 ">ConnectionInfo</span> connectionInfo <span style="color: #666666 ">=</span> ConnectionManager<span style="color: #666666 ">.</span><span style="color: #7D9029
+        ">ParseOptions</span><span style="color: #666666 ">(</span>args<span style="color: #666666 ">,</span> <span style="color: #008000; font-weight: bold ">true</span><span style="color: #666666 ">);</span>
+
+            <span style="color: #408080; font-style: italic ">// connecting to Nao remotely requires knowledge of his IP and Port on the network</span>
+            String robotUrl <span style="color: #666666 ">=</span> String<span style="color: #666666 ">.</span><span style="color: #7D9029 ">format</span><span style="color: #666666 ">(</span><span style="color: #BA2121
+        ">&quot;tcp://%s:%d&quot;</span><span style="color: #666666 ">,</span> connectionInfo<span style="color: #666666 ">.</span><span style="color: #7D9029 ">ip</span><span style="color: #666666 ">,</span> connectionInfo<span style="color: #666666 ">.</span><span style="color: #7D9029
+        ">port</span><span style="color: #666666 ">);</span>
+
+            <span style="color: #408080; font-style: italic ">// the application object initializes the qi framework</span>
+            <span style="color: #408080; font-style: italic ">// see <a href="https://github.com/aldebaran/libqi-java " target="_blank ">aldebaran/libqi-java</a> for more information</span>
+            Application application <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> Application<span style="color: #666666 ">(</span><span style="color: #008000; font-weight: bold
+        ">new</span> String<span style="color: #666666 ">[]{</span><span style="color: #BA2121 ">&quot;--qi-url&quot;</span><span style="color: #666666 ">,</span> robotUrl<span style="color: #666666 ">});</span>
+
+            <span style="color: #408080; font-style: italic ">// start processing qi event loop</span>
+            <span style="color: #408080; font-style: italic ">// and connect to session using robotUrl</span>
+            application<span style="color: #666666 ">.</span><span style="color: #7D9029 ">start</span><span style="color: #666666 ">();</span>
+
+            <span style="color: #408080; font-style: italic ">// the session object acts as a broker</span>
+            <span style="color: #408080; font-style: italic ">// between user code and the qi messaging layer,</span>
+            <span style="color: #408080; font-style: italic ">// providing access to local and remote services</span>
+            Session session <span style="color: #666666 ">=</span> application<span style="color: #666666 ">.</span><span style="color: #7D9029 ">session</span><span style="color: #666666 ">();</span>
+
+            <span style="color: #408080; font-style: italic ">//=========================================</span>
+            <span style="color: #408080; font-style: italic ">// &lt; insert all task-dependent code here &gt;</span>
+            <span style="color: #408080; font-style: italic ">//=========================================</span>
+
+            <span style="color: #408080; font-style: italic ">// join qi event loop thread</span>
+            application<span style="color: #666666 ">.</span><span style="color: #7D9029 ">run</span><span style="color: #666666 ">();</span>
+
+        <span style="color: #666666 ">}</span> <span style="color: #008000; font-weight: bold ">catch</span> <span style="color: #666666 ">(</span>Exception ex<span style="color: #666666 ">)</span> <span style="color: #666666
+        ">{</span> ex<span style="color: #666666 ">.</span><span style="color: #7D9029 ">printStackTrace</span><span style="color: #666666 ">();</span> <span style="color: #666666 ">}</span>
+    <span style="color: #666666 ">}</span>
+<span style="color: #666666 ">}</span>
+</pre></div>
+
+<h1>Hello World<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#hello-world">¶</a></h1>
+<h3>Using remote services:</h3>
+
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #408080; font-style: italic ">// create a proxy to remote TextToSpeech service</span>
+ALTextToSpeech tts <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> ALTextToSpeech<span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
+
+<span style="color: #408080; font-style: italic ">// call advertised &#39;say&#39; method</span>
+tts<span style="color: #666666 ">.</span><span style="color: #7D9029 ">say</span><span style="color: #666666 ">(</span><span style="color: #BA2121 ">&quot;Hello World!&quot;</span><span style="color: #666666 ">);</span>
+</pre></div>
+
+<h3>Using local services:</h3>
+
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% ">
+<span style="color: #408080; font-style: italic ">// create a proxy to remote TextToSpeech service</span>
+ALTextToSpeech tts <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> ALTextToSpeech<span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
+
+<span style="color: #408080; font-style: italic ">// create a local Repeat service</span>
+RepeatService service <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> RepeatService<span style="color: #666666 ">(</span>tts<span style="color: #666666 ">);</span>
+
+<span style="color: #408080; font-style: italic ">// register the local service with session</span>
+service<span style="color: #666666 ">.</span><span style="color: #7D9029 ">registerService</span><span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
+
+<span style="color: #408080; font-style: italic ">// create a proxy to local Repeat service</span>
+RepeatProxy r <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> RepeatProxy<span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
+
+<span style="color: #408080; font-style: italic ">// call advertised &#39;repeat&#39; method</span>
+r<span style="color: #666666 ">.</span><span style="color: #7D9029 ">repeat</span><span style="color: #666666 ">(</span><span style="color: #BA2121 ">&quot;Hello World!&quot;</span><span style="color: #666666 ">);</span>
+</pre></div>
+
+<h1>Implementing Local Services<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#implementing-local-services">¶</a></h1>
+
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">helper</span><span style="color: #666666
+        ">.</span><span style="color: #7D9029 ">services</span><span style="color: #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.CallError</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.helper.proxies.ALTextToSpeech</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">edu.fit.nao.helper.Advertise</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">edu.fit.nao.helper.CustomService</span><span style="color: #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">class</span> <span style="color: #0000FF; font-weight: bold ">RepeatService</span> <span style="color: #008000; font-weight: bold
+        ">extends</span> CustomService <span style="color: #666666 ">{</span>
+
+    <span style="color: #008000; font-weight: bold ">private</span> ALTextToSpeech tts<span style="color: #666666 ">;</span>
+
+    <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #0000FF ">RepeatService</span><span style="color: #666666 ">(</span>ALTextToSpeech tts<span style="color: #666666 ">)</span> <span style="color: #008000; font-weight:
+        bold ">throws</span> Exception <span style="color: #666666 ">{</span>
+
+        <span style="color: #008000; font-weight: bold ">super</span><span style="color: #666666 ">(</span><span style="color: #BA2121 ">&quot;RepeatService&quot;</span><span style="color: #666666 ">);</span>
+        <span style="color: #008000; font-weight: bold ">this</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">tts</span> <span style="color: #666666 ">=</span> tts<span style="color: #666666 ">;</span>
+    <span style="color: #666666 ">}</span>
+
+    <span style="color: #AA22FF ">@Advertise</span><span style="color: #666666 ">(</span>signature <span style="color: #666666 ">=</span> <span style="color: #BA2121 ">&quot;repeat::v(s)&quot;</span><span style="color: #666666
+        ">,</span> description <span style="color: #666666 ">=</span> <span style="color: #BA2121 ">&quot;Repeats given string&quot;</span><span style="color: #666666 ">)</span>
+    <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #B00040 ">void</span> <span style="color: #0000FF ">repeat</span><span style="color: #666666 ">(</span>String str<span style="color: #666666
+        ">)</span> <span style="color: #008000; font-weight: bold ">throws</span> InterruptedException<span style="color: #666666 ">,</span> CallError <span style="color: #666666 ">{</span>
+
+        <span style="color: #008000; font-weight: bold ">this</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">tts</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">say</span><span style="color: #666666
+        ">(</span>str<span style="color: #666666 ">);</span>
+    <span style="color: #666666 ">}</span>
+<span style="color: #666666 ">}</span>
+</pre></div>
+
+<h1>Implementing Proxies for Local Services<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#implementing-proxies-for-local-services">¶</a></h1>
+
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">helper</span><span style="color: #666666
+        ">.</span><span style="color: #7D9029 ">proxies</span><span style="color: #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.CallError</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.Session</span><span style="color: #666666 ">;</span>
+<span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.helper.ALProxy</span><span style="color: #666666 ">;</span>
+
+<span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">class</span> <span style="color: #0000FF; font-weight: bold ">RepeatProxy</span> <span style="color: #008000; font-weight: bold
+        ">extends</span> ALProxy <span style="color: #666666 ">{</span>
+
+    <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #0000FF ">RepeatProxy</span><span style="color: #666666 ">(</span>Session session<span style="color: #666666 ">)</span> <span style="color: #008000; font-weight:
+        bold ">throws</span> Exception <span style="color: #666666 ">{</span>
+
+        <span style="color: #008000; font-weight: bold ">super</span><span style="color: #666666 ">(</span>session<span style="color: #666666 ">,</span> <span style="color: #BA2121 ">&quot;RepeatService&quot;</span><span style="color: #666666 ">);</span>
+    <span style="color: #666666 ">}</span>
+
+    <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #B00040 ">void</span> <span style="color: #0000FF ">repeat</span><span style="color: #666666 ">(</span>String stringToRepeat<span style="color: #666666
+        ">)</span> <span style="color: #008000; font-weight: bold ">throws</span> CallError<span style="color: #666666 ">,</span> InterruptedException <span style="color: #666666 ">{</span>
+
+        <span style="color: #008000; font-weight: bold ">this</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">call</span><span style="color: #666666 ">(</span><span style="color: #BA2121
+        ">&quot;repeat&quot;</span><span style="color: #666666 ">,</span> stringToRepeat<span style="color: #666666 ">).</span><span style="color: #7D9029 ">get</span><span style="color: #666666 ">();</span>
+    <span style="color: #666666 ">}</span>
+<span style="color: #666666 ">}</span>
+</pre></div>

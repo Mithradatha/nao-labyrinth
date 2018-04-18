@@ -1,6 +1,6 @@
 package edu.fit.nao.module.perception.camera;
 
-import edu.fit.nao.module.geometry.Position3D;
+import edu.fit.nao.helper.geometry.Position3D;
 
 public class CameraEvent {
 

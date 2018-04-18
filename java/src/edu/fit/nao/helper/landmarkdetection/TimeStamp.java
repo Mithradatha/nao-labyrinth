@@ -1,6 +1,6 @@
-package edu.fit.nao.module.landmarkdetection;
+package edu.fit.nao.helper.landmarkdetection;
 
-import edu.fit.nao.ALValue;
+import edu.fit.nao.helper.ALValue;
 
 import java.util.List;
 

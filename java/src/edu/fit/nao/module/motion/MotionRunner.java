@@ -6,8 +6,8 @@ import com.aldebaran.qi.helper.proxies.ALAutonomousLife;
 import com.aldebaran.qi.helper.proxies.ALMemory;
 import com.aldebaran.qi.helper.proxies.ALMotion;
 import com.aldebaran.qi.helper.proxies.ALRobotPosture;
-import edu.fit.nao.ModuleRunner;
-import edu.fit.nao.module.geometry.Pose2D;
+import edu.fit.nao.helper.ModuleRunner;
+import edu.fit.nao.helper.geometry.Pose2D;
 import edu.fit.nao.module.perception.inertialunit.InertialUnit;
 
 import java.util.Timer;

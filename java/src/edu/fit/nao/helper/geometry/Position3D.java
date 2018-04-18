@@ -1,23 +1,26 @@
-package edu.fit.nao.module.geometry;
+package edu.fit.nao.helper.geometry;
 
-public class Position2D {
+public class Position3D {
 
     // translation (meters)
     public final float x;
     public final float y;
+    public final float z;
 
-    public Position2D(float x, float y) {
+    public Position3D(float x, float y, float z) {
 
         this.x = x;
         this.y = y;
+        this.z = z;
     }
 
     @Override
     public String toString() {
 
-        return "Position2D{" +
+        return "Position3D{" +
                 "x=" + x +
                 ", y=" + y +
+                ", z=" + z +
                 '}';
     }
 }

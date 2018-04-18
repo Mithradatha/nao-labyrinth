@@ -1,4 +1,4 @@
-package edu.fit.nao;
+package edu.fit.nao.helper;
 
 import com.aldebaran.qi.*;
 
@@ -8,7 +8,7 @@ public abstract class CustomService extends QiService {
 
     private final String name;
 
-    public CustomService(String name) {
+    public CustomService(String name) throws QiException {
 
         super();
         this.name = name;

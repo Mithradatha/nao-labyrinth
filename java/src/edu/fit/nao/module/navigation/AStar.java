@@ -1,6 +1,6 @@
 package edu.fit.nao.module.navigation;
 
-import edu.fit.nao.module.geometry.Point2D;
+import edu.fit.nao.helper.geometry.Point2D;
 
 import java.util.*;
 

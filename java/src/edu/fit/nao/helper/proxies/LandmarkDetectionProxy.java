@@ -1,4 +1,4 @@
-package edu.fit.nao.module.landmarkdetection;
+package edu.fit.nao.helper.proxies;
 
 import com.aldebaran.qi.CallError;
 import com.aldebaran.qi.Session;

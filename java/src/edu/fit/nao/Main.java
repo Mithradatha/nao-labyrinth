@@ -2,11 +2,12 @@ package edu.fit.nao;
 
 import com.aldebaran.qi.Application;
 import com.aldebaran.qi.Session;
+import edu.fit.nao.helper.ConnectionManager;
+import edu.fit.nao.helper.ModuleRunner;
 import edu.fit.nao.module.localization.LocalizationRunner;
 import edu.fit.nao.module.motion.MotionRunner;
 import edu.fit.nao.module.navigation.NavigationRunner;
 import edu.fit.nao.module.perception.PerceptionRunner;
-import edu.fit.nao.module.repeat.RepeatRunner;
 
 import java.nio.file.Paths;
 
@@ -45,12 +46,6 @@ public class Main {
 
         ModuleRunner motion = new MotionRunner(session);
         motion.run();
-    }
-
-    private static void Repeat(Session session) throws Exception {
-
-        ModuleRunner repeat = new RepeatRunner(session);
-        repeat.run();
     }
 
     private static void Navigation(Session session) throws Exception {
