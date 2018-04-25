@@ -1,15 +1,119 @@
-<title>Documentation</title>
-<!-- syntax highlighting via hilite.me 
+<html>
+
+<head>
+    <title>Documentation</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 6px;
+            text-align: center;
+        }
+        
+        div.nav-content {
+            background: #f8f8f8;
+            display: inline-block;
+            overflow: auto;
+            width: auto;
+            border: solid gray;
+            border-width: .1em .1em .1em .8em;
+            padding: .4em .8em .4em .0em
+        }
+        
+        div.detail-content {
+            background: #f8f8f8;
+            overflow: auto;
+            display: inline-block;
+            width: auto;
+            padding: .2em .6em;
+            margin-left: 0.8em;
+            margin-bottom: 0.5em;
+        }
+        
+        div.footer-content {
+            background: #f8f8f8;
+            display: inline-block;
+            overflow: auto;
+            width: auto;
+            border: solid gray;
+            border-width: .1em .1em .1em .1em;
+            padding: .4em .8em .4em .8em;
+            margin-top: 0.5em;
+            margin-left: 0.6em;
+        }
+        
+        span.footer-separator {
+            display: inline-block;
+            margin-left: 0.3em;
+            margin-right: 0.3em
+        }
+        
+        a.footer-link:link,
+        a.footer-link:visited {
+            background-color: #f8f8f8;
+            color: #B00040;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        a.footer-link:hover,
+        a.footer-link:active {
+            background-color: f8f8f8;
+            color: #7D9029;
+        }
+        
+        a.nav-link:link,
+        a.nav-link:visited {
+            background-color: #f8f8f8;
+            color: #B00040;
+            padding: 10px 20px;
+            margin: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        a.nav-link:hover,
+        a.nav-link:active {
+            background-color: f8f8f8;
+            color: #7D9029;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- syntax highlighting via hilite.me 
 Language: Java
 Style: default
 Line numbers: unchecked
 CSS: border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;
 -->
 
-<h1>Getting Started
-    <a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#getting-started">¶</a></h1>
+    <a name="navigation"></a>
+    <h1>Navigation</h1>
+    <div class="nav-content">
 
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        <a class="nav-link" href="#getting-started ">Getting Started</a><br/>
+        <a class="nav-link" href="#hello-world ">Hello World</a><br/>
+        <a class="nav-link" href="#implementing-local-services ">Implementing Local Services</a><br/>
+        <a class="nav-link" href="#implementing-proxies-for-local-services ">Implementing Proxies for Local Services</a><br/>
+    </div>
+    <br/>
+
+    <a name="getting-started "></a>
+    <h1>Getting Started</h1>
+
+    <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
         ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">tutorial</span><span style="color:
         #666666 ">;</span>
 
@@ -17,7 +121,7 @@ CSS: border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;
 <span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">com.aldebaran.qi.Session</span><span style="color: #666666 ">;</span>
 <span style="color: #008000; font-weight: bold ">import</span> <span style="color: #0000FF; font-weight: bold ">edu.fit.nao.helper.ConnectionManager</span><span style="color: #666666 ">;</span>
 
-<span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">class</span> <span style="color: #0000FF; font-weight: bold ">BareBones</span> <span style="color: #666666 ">{</span>
+<span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">class</span> <span style="color: #0000FF; font-weight: bold ">edu.fit.nao.tutorial.BareBones</span> <span style="color: #666666 ">{</span>
 
     <span style="color: #408080; font-style: italic ">// cmd args: --pip &lt;ip&gt; --pport &lt;port&gt;</span>
     <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #008000; font-weight: bold ">static</span> <span style="color: #B00040 ">void</span> <span style="color: #0000FF ">main</span><span style="color: #666666
@@ -60,20 +164,27 @@ CSS: border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;
     <span style="color: #666666 ">}</span>
 <span style="color: #666666 ">}</span>
 </pre></div>
+    <div class="footer-content">
+        <a class="footer-link" href="#navigation">Back To Top</a>
+        <span class="footer-separator">|</span>
+        <a class="footer-link" href="code/BareBones.java" download="BareBones.java">BareBones.java</a>
+    </div>
 
-<h1>Hello World<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#hello-world">¶</a></h1>
-<h3>Using remote services:</h3>
+    <a name="hello-world "></a>
+    <h1>Hello World</h3>
 
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #408080; font-style: italic ">// create a proxy to remote TextToSpeech service</span>
+        <h3>Using remote services:</h3>
+
+        <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #408080; font-style: italic ">// create a proxy to remote TextToSpeech service</span>
 ALTextToSpeech tts <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> ALTextToSpeech<span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
 
 <span style="color: #408080; font-style: italic ">// call advertised &#39;say&#39; method</span>
 tts<span style="color: #666666 ">.</span><span style="color: #7D9029 ">say</span><span style="color: #666666 ">(</span><span style="color: #BA2121 ">&quot;Hello World!&quot;</span><span style="color: #666666 ">);</span>
 </pre></div>
 
-<h3>Using local services:</h3>
+        <h3>Using local services:</h3>
 
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% ">
+        <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% ">
 <span style="color: #408080; font-style: italic ">// create a proxy to remote TextToSpeech service</span>
 ALTextToSpeech tts <span style="color: #666666 ">=</span> <span style="color: #008000; font-weight: bold ">new</span> ALTextToSpeech<span style="color: #666666 ">(</span>session<span style="color: #666666 ">);</span>
 
@@ -89,10 +200,61 @@ RepeatProxy r <span style="color: #666666 ">=</span> <span style="color: #008000
 <span style="color: #408080; font-style: italic ">// call advertised &#39;repeat&#39; method</span>
 r<span style="color: #666666 ">.</span><span style="color: #7D9029 ">repeat</span><span style="color: #666666 ">(</span><span style="color: #BA2121 ">&quot;Hello World!&quot;</span><span style="color: #666666 ">);</span>
 </pre></div>
+        <div class="footer-content">
+            <a class="footer-link" href="#navigation">Back To Top</a>
+            <span class="footer-separator">|</span>
+            <a class="footer-link" href="code/RemoteService.java" download="RemoteService.java">RemoteService.java</a>
+            <span class="footer-separator">|</span>
+            <a class="footer-link" href="code/LocalService.java" download="LocalService.java">LocalService.java</a>
+        </div>
 
-<h1>Implementing Local Services<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#implementing-local-services">¶</a></h1>
+        <a name="implementing-local-services "></a>
+        <h1>Implementing Local Services</h1>
 
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        <div class="detail-content">
+            <span style="color: #AA22FF">@Advertise</span>
+            <pre>{
+    signature    > how should i call this method?
+    description  > what does this method do?
+}</pre>
+        </div>
+        <div class="detail-content">
+            <span style="color: #BA2121">Signature</span><br/><br/>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <td>Void</td>
+                    <td>Object</td>
+                    <td>AnyObject</td>
+                    <td>Boolean</td>
+                    <td>Integer</td>
+                    <td>Float</td>
+                    <td>Double</td>
+                    <td>Character</td>
+                    <td>String</td>
+                    <td>List</td>
+                    <td>Map</td>
+                    <td>Tuple</td>
+                </tr>
+                <tr>
+                    <th>Mapping</th>
+                    <td>v</td>
+                    <td>o</td>
+                    <td>m</td>
+                    <td>b</td>
+                    <td>i</td>
+                    <td>f</td>
+                    <td>d</td>
+                    <td>c</td>
+                    <td>s</td>
+                    <td>[]</td>
+                    <td>()</td>
+                    <td>{}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
         ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">helper</span><span style="color: #666666
         ">.</span><span style="color: #7D9029 ">services</span><span style="color: #666666 ">;</span>
 
@@ -113,6 +275,7 @@ r<span style="color: #666666 ">.</span><span style="color: #7D9029 ">repeat</spa
         <span style="color: #008000; font-weight: bold ">this</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">tts</span> <span style="color: #666666 ">=</span> tts<span style="color: #666666 ">;</span>
     <span style="color: #666666 ">}</span>
 
+    <span style="color: #408080; font-style: italic ">// signature => &ltmethod_name&gt::&ltreturn_type&gt(&ltparameter_types&gt)</span>
     <span style="color: #AA22FF ">@Advertise</span><span style="color: #666666 ">(</span>signature <span style="color: #666666 ">=</span> <span style="color: #BA2121 ">&quot;repeat::v(s)&quot;</span><span style="color: #666666
         ">,</span> description <span style="color: #666666 ">=</span> <span style="color: #BA2121 ">&quot;Repeats given string&quot;</span><span style="color: #666666 ">)</span>
     <span style="color: #008000; font-weight: bold ">public</span> <span style="color: #B00040 ">void</span> <span style="color: #0000FF ">repeat</span><span style="color: #666666 ">(</span>String str<span style="color: #666666
@@ -123,10 +286,18 @@ r<span style="color: #666666 ">.</span><span style="color: #7D9029 ">repeat</spa
     <span style="color: #666666 ">}</span>
 <span style="color: #666666 ">}</span>
 </pre></div>
+        <div class="footer-content">
+            <a class="footer-link" href="#navigation">Back To Top</a>
+            <span class="footer-separator">|</span>
+            <a class="footer-link" href="code/RepeatService.java" download="RepeatService.java">RepeatService.java</a>
+            <span class="footer-separator">|</span>
+            <a class="footer-link" href="https://github.com/aldebaran/libqi-java/blob/master/qimessaging/src/main/java/com/aldebaran/qi/serialization/SignatureUtilities.java" target="_blank">Signature Utility</a>
+        </div>
 
-<h1>Implementing Proxies for Local Services<a style="font-size: .4em; vertical-align: top; margin: 0.6em; color: #666666" href="#implementing-proxies-for-local-services">¶</a></h1>
+        <a name="implementing-proxies-for-local-services "></a>
+        <h1>Implementing Proxies for Local Services</h1>
 
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
+        <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; "><pre style="margin: 0; line-height: 125% "><span style="color: #008000; font-weight: bold
         ">package</span> edu<span style="color: #666666 ">.</span><span style="color: #7D9029 ">fit</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">nao</span><span style="color: #666666 ">.</span><span style="color: #7D9029 ">helper</span><span style="color: #666666
         ">.</span><span style="color: #7D9029 ">proxies</span><span style="color: #666666 ">;</span>
 
@@ -151,3 +322,12 @@ r<span style="color: #666666 ">.</span><span style="color: #7D9029 ">repeat</spa
     <span style="color: #666666 ">}</span>
 <span style="color: #666666 ">}</span>
 </pre></div>
+        <div class="footer-content">
+            <a class="footer-link" href="#navigation">Back To Top</a>
+            <span class="footer-separator">|</span>
+            <a class="footer-link" href="code/RepeatProxy.java" download="RepeatProxy.java">RepeatProxy.java</a>
+        </div>
+
+</body>
+
+</html>

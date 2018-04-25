@@ -1,11 +1,11 @@
 package edu.fit.nao.tutorial;
 
-        import com.aldebaran.qi.Application;
+import com.aldebaran.qi.Application;
         import com.aldebaran.qi.Session;
         import com.aldebaran.qi.helper.proxies.ALTextToSpeech;
         import edu.fit.nao.helper.ConnectionManager;
 
-public class HelloWorld {
+public class RemoteService {
 
     public static void main(String[] args) {
 
